@@ -28,12 +28,12 @@
   /* ============ TEMPLE DOOR ============ */
   /* Royal arch "door": the arch image is split down the middle into two leaves that swing open */
   #temple{position:fixed;inset:0;z-index:100;perspective:1600px;cursor:pointer;overflow:hidden;background:#3a0a10}
-  #temple::before{content:"";position:absolute;inset:-40px;background:url('assets/door-arch.jpg') center/cover;filter:blur(24px) brightness(.55)}
+  #temple::before{content:"";position:absolute;inset:-40px;background:url('assests/door-arch.jpg') center/cover;filter:blur(24px) brightness(.55)}
   #temple.opened{pointer-events:none}
   #temple.gone{display:none}
   .door{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;z-index:2;backface-visibility:hidden;
     transition:transform 2.4s cubic-bezier(.65,.05,.25,1), filter 2.4s ease, opacity 1s ease 1.6s}
-  .door .img{position:absolute;top:0;bottom:0;width:200%;background:url('assets/door-arch.jpg') center/cover no-repeat}
+  .door .img{position:absolute;top:0;bottom:0;width:200%;background:url('assests/door-arch.jpg') center/cover no-repeat}
   .door.left{left:0;transform-origin:left center}
   .door.left .img{left:0}
   .door.right{right:0;transform-origin:right center}
@@ -61,7 +61,7 @@
 
   /* ============ HERO / GANPATI ============ */
   .hero{min-height:100vh;min-height:100svh;position:relative;overflow:hidden;
-    background:#f7efe2 url('assets/bg-cream.jpg') center/cover no-repeat;
+    background:#f7efe2 url('assests/bg-cream.jpg') center/cover no-repeat;
     color:var(--maroon);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 18px 70px;text-align:center}
   .hero > .shri,.hero > .shrine,.hero > .invite{position:relative;z-index:2}
   .hero > .scroll-hint{z-index:2}
@@ -255,7 +255,7 @@
 
     <div class="idol-wrap">
       <div class="halo"></div>
-      <div class="idol-frame"><img class="idol" src="assets/ganesh.jpg" alt="Lord Ganesha" /></div>
+      <div class="idol-frame"><img class="idol" src="assests/ganesh.jpg" alt="Lord Ganesha" /></div>
     </div>
 
     <div class="diyas">
