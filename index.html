@@ -544,44 +544,53 @@
 
   /* ============ TEMPLE DOOR ============ */
   /* Royal arch "door": the arch image is split down the middle into two leaves that swing open */
-  #temple{position:fixed;inset:0;z-index:100;cursor:pointer;overflow:hidden;background:#4a1612;transition:opacity 1s ease}
-  #temple.opened{pointer-events:none}
+  #temple{position:fixed;inset:0;z-index:100;overflow:hidden;background:#120406;color:#f3d98b;
+    display:flex;align-items:center;justify-content:center}
   #temple.gone{display:none}
-  /* blurred copy fills any extra screen width so nothing is cropped or empty */
-  #temple::before{content:"";position:absolute;inset:-30px;background:url('assests/env_closed.jpg') center/cover;filter:blur(22px) brightness(.85)}
-  .env{position:absolute;left:50%;top:50%;height:100vh;height:100svh;aspect-ratio:720/1280;max-width:100vw;transform:translate(-50%,-50%);overflow:hidden;
-    background:#5a1f1a url('assests/env_closed.jpg') center/100% 100% no-repeat;
-    transition:transform 1.5s cubic-bezier(.55,.05,.25,1) .9s, filter 1.2s ease .9s}
-  /* the video: envelope holds, then a soft push-in as the cream light blooms */
-  #temple.opened .env{transform:translate(-50%,-50%) scale(1.18);filter:brightness(1.25) saturate(.85)}
-  /* cream light that blooms from the flap tip, then fills the screen */
-  .bloom{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;
-    background:radial-gradient(ellipse 18% 12% at 50% 47%,#fffdf6 0%,rgba(255,250,235,.95) 40%,rgba(248,240,222,0) 100%);transform:scale(.2);transform-origin:50% 47%;
-    transition:opacity .9s ease .85s, transform 1.6s cubic-bezier(.4,0,.2,1) .85s}
-  #temple.opened .bloom{opacity:1;transform:scale(9)}
-  .bloom2{position:absolute;inset:0;z-index:3;opacity:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,#fffdf7 0%,#f8f0de 55%,#e8dbc2 100%);
-    transition:opacity .9s ease 1.5s}
-  #temple.opened .bloom2{opacity:1}
-  /* soft light sweep across the paper while waiting, so it feels alive */
-  .env::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(115deg,transparent 40%,rgba(255,230,200,.16) 50%,transparent 60%);background-size:260% 100%;animation:paper 5.5s ease-in-out infinite}
-  @keyframes paper{0%{background-position:160% 0}60%,100%{background-position:-60% 0}}
-  #temple.opened .env::after{display:none}
+  /* ---------- 1. Gate: Shri Ganeshaya Namaha + Tap to Play ---------- */
+  .gate{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 24px;
+    background:#7a0c14 url('assests/open-bg.jpg') center/cover no-repeat;transition:opacity .9s ease}
+  /* soft dark centre so the gold text stays readable over the linen */
+  .gate .shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 48%,rgba(40,3,8,.55) 0%,rgba(40,3,8,.28) 55%,rgba(40,3,8,0) 100%)}
+  .gate::before{content:"";position:absolute;inset:16px;border:1px solid rgba(243,217,139,.85);pointer-events:none}
+  .gate::after{content:"";position:absolute;inset:24px;border:1px solid rgba(212,175,55,.28);pointer-events:none}
+  .gate .glowdisc{position:absolute;left:50%;top:44%;width:min(120vw,620px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(243,217,139,.2) 0%,rgba(212,175,55,.07) 45%,transparent 70%);animation:breathe 4.5s ease-in-out infinite}
+  .gold{background:linear-gradient(100deg,#9c7a1e 0%,#f3d98b 22%,#d4af37 40%,#fff1c4 52%,#d4af37 64%,#f3d98b 80%,#9c7a1e 100%);background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:goldshine 6s linear infinite}
+  @keyframes goldshine{to{background-position:-220% 0}}
+  .g-om{position:relative;font-size:clamp(26px,7vw,36px);line-height:1;margin-bottom:12px;opacity:0;animation:gin 1.4s ease .2s forwards}
+  .g-sh{position:relative;font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(20px,5.6vw,30px);line-height:1.35;opacity:0;animation:gin 1.6s ease .5s forwards}
+  .g-rule{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:min(60vw,240px);margin:16px 0 4px;color:#d4af37;opacity:0;animation:gin 1.2s ease 1s forwards}
+  .g-rule::before,.g-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#d4af37)}
+  .g-rule::after{background:linear-gradient(270deg,transparent,#d4af37)}
+  .g-en{position:relative;font-family:'Cinzel Decorative',serif;font-size:clamp(15px,4.4vw,24px);letter-spacing:.14em;opacity:0;animation:gin 1.4s ease 1.15s forwards}
+  .g-sub{position:relative;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4.4vw,20px);color:#e9d6bb;margin-top:10px;opacity:0;animation:gin 1.4s ease 1.4s forwards}
+  .g-btn{position:relative;margin-top:38px;display:inline-flex;align-items:center;gap:12px;padding:14px 34px;border-radius:60px;cursor:pointer;
+    border:1.5px solid #d4af37;background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(212,175,55,.04));color:#f3d98b;
+    font-family:'Cinzel Decorative',serif;letter-spacing:.2em;font-size:clamp(12px,3.4vw,15px);backdrop-filter:blur(3px);
+    box-shadow:0 0 0 0 rgba(212,175,55,.5);opacity:0;animation:gin 1.2s ease 1.8s forwards, gpulse 2.4s ease-in-out 3s infinite}
+  .g-btn .tri{width:0;height:0;border-left:12px solid #f3d98b;border-top:8px solid transparent;border-bottom:8px solid transparent}
+  .g-note{position:relative;margin-top:14px;font-size:10px;letter-spacing:.3em;color:#a98d57;opacity:0;animation:gin 1.2s ease 2.1s forwards}
+  @keyframes gin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes gpulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 0 16px rgba(212,175,55,0)}}
+  #temple.playing .gate{opacity:0;pointer-events:none}
 
-  /* wax seal at the centre tab: wide box so the script U is never cut */
-  .seal{position:absolute;left:50%;top:47%;width:clamp(78px,21vw,104px);height:clamp(78px,21vw,104px);transform:translate(-50%,-50%);z-index:6;
-    transition:transform .55s ease, opacity .45s ease;animation:sealpulse 2s ease-in-out infinite}
-  .seal .wax{position:absolute;inset:0;background:radial-gradient(circle at 34% 28%,#f8e7ac 0%,#dcb544 32%,#b08a1c 62%,#7d5f10 100%);
-    clip-path:polygon(50% 0%,60% 4%,71% 2%,78% 10%,89% 14%,93% 25%,100% 34%,97% 46%,100% 58%,94% 68%,95% 80%,85% 85%,79% 94%,67% 94%,57% 100%,46% 96%,35% 99%,26% 91%,14% 90%,9% 79%,0 70%,4% 58%,0 46%,6% 35%,5% 22%,15% 16%,21% 7%,33% 6%,41% 1%);
-    filter:drop-shadow(0 6px 8px rgba(0,0,0,.6))}
-  .seal .wax::after{content:"";position:absolute;inset:11%;border-radius:50%;
-    background:radial-gradient(circle at 60% 70%,rgba(255,240,180,.28),transparent 55%),radial-gradient(circle at 40% 30%,#c79f2c,#9d7a16 70%);
-    box-shadow:inset 0 3px 6px rgba(0,0,0,.45),inset 0 -2px 3px rgba(255,235,160,.5)}
-  .seal .mono{position:absolute;left:-14%;right:-14%;top:0;bottom:0;display:flex;align-items:center;justify-content:center;overflow:visible;
-    color:#6b4d0b;font-family:'Great Vibes',cursive;font-size:clamp(26px,7vw,34px);line-height:1.3;padding:0 .4em 4px .2em;white-space:nowrap;letter-spacing:.04em;
-    text-shadow:0 1px 0 rgba(255,240,190,.55),0 -1px 1px rgba(60,40,0,.45)}
-  #temple.opened .seal{transform:translate(-50%,-50%) scale(1.35) rotate(8deg);opacity:0;animation:none}
-  @keyframes sealpulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.045)}}
+  /* ---------- 2. Video (4.7s intro) ---------- */
+  .vwrap{position:absolute;left:50%;top:50%;height:100vh;height:100svh;aspect-ratio:720/1280;max-width:100vw;transform:translate(-50%,-50%);z-index:1;overflow:hidden;background:#120406}
+  #introVid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#120406}
+  /* blurred copy fills any extra screen width so no black bars on wide screens */
+  #temple .vfill{position:absolute;inset:-30px;z-index:0;background:#5a0a10 url('assests/open-bg.jpg') center/cover;filter:blur(18px) brightness(.8)}
+
+  /* ---------- 3. Light flash -> invitation ---------- */
+  .flashveil{position:absolute;inset:0;z-index:4;opacity:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%,#fffaf0 0%,#f6ecd6 55%,#ecdcb8 100%)}
+  #temple.flash .flashveil{opacity:1;transition:opacity .9s ease}
+  #temple.fading{opacity:0;transition:opacity 1.2s ease}
+  .skip{position:absolute;right:16px;top:16px;z-index:6;padding:7px 14px;border-radius:30px;border:1px solid rgba(212,175,55,.6);background:rgba(0,0,0,.45);
+    color:#f3d98b;font-family:'Cinzel Decorative',serif;font-size:10px;letter-spacing:.18em;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .5s}
+  #temple.playing .skip{opacity:.85;pointer-events:auto}
+  #temple.flash .skip,#temple.fading .skip{opacity:0;pointer-events:none}
 
   /* ============ HERO / GANPATI ============ */
   .hero{min-height:100vh;min-height:100svh;position:relative;overflow:hidden;
@@ -603,13 +612,6 @@
   .idol-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,240,200,.35) 50%,transparent 60%);
     background-size:250% 100%;animation:sheen 5s ease-in-out infinite}
   @keyframes sheen{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
-  .lamp-wrap{position:relative;width:clamp(54px,15vw,92px);align-self:flex-end;margin-bottom:4px}
-  .lamp-wrap::before{content:"";position:absolute;left:50%;top:18%;width:260%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
-    background:radial-gradient(circle,rgba(255,200,110,.5),rgba(255,170,60,.12) 45%,transparent 68%);pointer-events:none;animation:lampglow 2.6s ease-in-out infinite alternate}
-  .lamp{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 6px 8px rgba(70,40,10,.35));animation:lampflick 3.2s ease-in-out infinite alternate}
-  @keyframes lampglow{from{opacity:.65;transform:translate(-50%,-50%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
-  @keyframes lampflick{0%{filter:drop-shadow(0 6px 8px rgba(70,40,10,.35)) brightness(1)}50%{filter:drop-shadow(0 6px 8px rgba(70,40,10,.35)) brightness(1.06)}100%{filter:drop-shadow(0 6px 8px rgba(70,40,10,.35)) brightness(.98)}}
-  .lamp-wrap:last-child .lamp{transform:scaleX(-1)}
   .invite{max-width:640px;margin-top:22px;position:relative}
   .invite .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,20px);color:var(--gold-d);margin-bottom:14px}
   .person{margin:6px 0}
@@ -623,12 +625,12 @@
     display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.8}
   .scroll-hint span.arrow{width:18px;height:18px;border-right:2px solid var(--maroon);border-bottom:2px solid var(--maroon);transform:rotate(45deg);animation:bob 1.6s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(6px) rotate(45deg)}}
-  /* Parijat flower shower (real photo) */
+  /* Rose petal shower */
   .petal{position:absolute;top:-50px;z-index:1;pointer-events:none;animation:petalfall linear forwards}
-  .petal img{display:block;width:var(--w);height:auto;filter:drop-shadow(0 2px 3px rgba(90,50,20,.28));
+  .petal svg{display:block;width:var(--w);height:calc(var(--w) * 1.25);overflow:visible;filter:drop-shadow(0 2px 3px rgba(80,0,20,.3));
     animation:spinfall var(--fl) ease-in-out infinite alternate}
   @keyframes petalfall{to{transform:translate(var(--dx),calc(100vh + 120px));opacity:.92}}
-  @keyframes spinfall{from{transform:rotate(-55deg) rotateX(0deg)}to{transform:rotate(55deg) rotateX(55deg)}}
+  @keyframes spinfall{from{transform:rotate(-50deg) rotateY(0deg) scale(1)}to{transform:rotate(50deg) rotateY(70deg) scale(.9)}}
   @keyframes fall{to{transform:translate(var(--dx),110vh) rotate(720deg);opacity:.2}}
 
   /* ============ COMMON SECTION ============ */
@@ -685,14 +687,15 @@
 
   /* ============ SCHEDULE ============ */
   .schedule{background:transparent;color:var(--text)}
-  .schedule .title{color:var(--maroon)} .schedule .subtitle{color:var(--gold-d)}
+  .schedule .title{color:var(--maroon)} .schedule .subtitle{color:#6b4a05;font-weight:600;font-size:clamp(17px,4.2vw,21px)}
   .timeline{max-width:560px;margin:0 auto;position:relative;text-align:left}
   .timeline::before{content:"";position:absolute;left:26px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
   .t-item{display:flex;gap:20px;align-items:flex-start;padding:16px 0;position:relative}
   .t-dot{flex:0 0 54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:22px;
-    background:#fff8ec;border:2px solid var(--gold);position:relative;z-index:1;box-shadow:0 4px 12px rgba(90,15,28,.15)}
-  .t-item h3{font-size:24px;color:var(--maroon)} .t-item .when{font-size:13px;letter-spacing:1.5px;color:var(--gold-d);text-transform:uppercase}
-  .t-item p{font-size:14px;color:#6b4a35;margin-top:4px}
+    background:#fff8ec;border:2px solid var(--gold);position:relative;z-index:1;box-shadow:0 4px 12px rgba(90,15,28,.18)}
+  .t-item h3{font-size:24px;color:var(--maroon)} .t-item .when{display:inline-block;font-size:13px;font-weight:600;letter-spacing:1.5px;color:#6b4a05;text-transform:uppercase;
+    padding:3px 12px;border-radius:30px;background:rgba(212,175,55,.2);border:1px solid rgba(156,122,30,.55);margin-bottom:4px}
+  .t-item p{font-size:14px;color:#4a2a1a;margin-top:4px}
 
   /* ============ STORY / GALLERY ============ */
   .story-note{max-width:640px;margin:0 auto 36px;font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4.4vw,22px);line-height:1.7;color:#5b3a28}
@@ -708,6 +711,27 @@
   .wa:hover{box-shadow:0 10px 24px rgba(37,211,102,.5)}
   footer small{display:block;margin-top:34px;font-size:12px;color:#8a6a4a;letter-spacing:1px}
 
+
+  /* ============ LANGUAGE SWITCH ============ */
+  .langsw{position:fixed;top:14px;left:14px;z-index:130;display:flex;padding:3px;border-radius:30px;border:1px solid rgba(212,175,55,.75);
+    background:rgba(20,5,8,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.28)}
+  .langsw button{border:0;background:transparent;cursor:pointer;padding:6px 13px;border-radius:26px;color:#f3d98b;font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:.06em;line-height:1;transition:background .25s,color .25s}
+  .langsw button.mr{font-family:'Tiro Devanagari Hindi',serif;font-size:13px;letter-spacing:0}
+  .langsw button.on{background:linear-gradient(135deg,#f6e29c,#d4af37 55%,#b8901f);color:#3a0811;font-weight:600}
+  body.past-gate .langsw{background:rgba(255,248,236,.9);border-color:rgba(212,175,55,.9)}
+  body.past-gate .langsw button{color:#5a0f1c}
+  body.past-gate .langsw button.on{color:#3a0811}
+  /* Marathi typography: Devanagari needs a little more line height and none of the wide letter-spacing */
+  body.lang-mr{font-family:'Tiro Devanagari Hindi','Poppins',serif}
+  body.lang-mr .title,body.lang-mr h3,body.lang-mr .subtitle,body.lang-mr .story-note,body.lang-mr .warm,body.lang-mr .lead,body.lang-mr .parents,
+  body.lang-mr .closing,body.lang-mr .venue-addr,body.lang-mr .t-item p,body.lang-mr .hosts,body.lang-mr .when,body.lang-mr .cd-box span,body.lang-mr .scratch-tip,
+  body.lang-mr .cd-label,body.lang-mr .btn-gold,body.lang-mr .day,body.lang-mr .time,body.lang-mr .hashtag-note,body.lang-mr .g-sub,body.lang-mr .g-btn,body.lang-mr .g-note,body.lang-mr .scroll-hint,body.lang-mr footer small{
+    font-family:'Tiro Devanagari Hindi',serif;letter-spacing:0;text-transform:none;line-height:1.6}
+  body.lang-mr .person .name{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(34px,9vw,56px);line-height:1.25;letter-spacing:0}
+  body.lang-mr .closing b{font-family:'Tiro Devanagari Hindi',serif;letter-spacing:0}
+  body.lang-mr .scratch-under .date{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(26px,7vw,36px);letter-spacing:0}
+  body.lang-mr .g-btn{font-size:clamp(14px,3.8vw,17px)}
+
   .sound{position:fixed;right:14px;bottom:14px;z-index:50;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);
     background:rgba(58,8,17,.85);color:var(--gold-l);font-size:18px;cursor:pointer;display:none}
   .sound.show{display:block}
@@ -719,71 +743,80 @@
 </style>
 </head>
 <body class="locked">
+<div class="langsw" id="langsw" role="group" aria-label="Language">
+  <button type="button" data-lang="en" class="on">English</button>
+  <button type="button" data-lang="mr" class="mr">मराठी</button>
+</div>
 
 <!-- ================= TEMPLE DOOR ================= -->
-<div id="temple" role="button" tabindex="0" aria-label="Tap the seal to open the invitation">
-  <div class="env">
-    <div class="bloom"></div>
-    <div class="bloom2"></div>
-    <div class="seal"><div class="wax"></div><div class="mono">R ♥ U</div></div>
+<div id="temple" role="dialog" aria-label="Invitation opening">
+  <div class="vfill"></div>
+  <div class="vwrap"><video id="introVid" src="assests/intro.mp4" poster="assests/intro_poster.jpg" playsinline="" muted="" preload="auto"></video></div>
+  <div class="flashveil"></div>
+  <button class="skip" id="skipBtn" type="button">SKIP</button>
+  <div class="gate" id="gate">
+    <div class="shade"></div>
+    <div class="glowdisc"></div>
+    <div class="g-om gold deva">ॐ</div>
+    <div class="g-sh gold deva">॥ श्री गणेशाय नमः ॥</div>
+    <div class="g-rule">✦</div>
+    <div class="g-sub" data-i18n="g_sub">With the blessings of Lord Ganesha</div>
+    <button class="g-btn" id="playBtn" type="button"><span class="tri"></span><span data-i18n="g_play">TAP TO PLAY</span></button>
+    <div class="g-note" data-i18n="g_note">MUSIC WILL PLAY</div>
   </div>
 </div>
 
 <!-- ================= HERO : GANPATI ================= -->
 <header class="hero" id="home">
-  <div class="shri deva">॥ श्री गणेशाय नमः ॥</div>
+  <div class="shri deva" style="font-size:clamp(15px,3.8vw,20px)">॥ श्री गणेशाय नमः ॥</div>
 
   <div class="shrine">
-    <div class="lamp-wrap"><img class="lamp" src="assests/lamp.png" alt="" onerror="this.parentNode.style.display='none'"></div>
-
     <div class="idol-wrap">
       <div class="halo"></div>
       <div class="idol-frame"><img class="idol" src="assests/ganesh.jpg" alt="Lord Ganesha"></div>
     </div>
-
-    <div class="lamp-wrap"><img class="lamp" src="assests/lamp.png" alt="" onerror="this.parentNode.style.display='none'"></div>
   </div>
 
   <div class="invite">
-    <p class="lead">With the blessings of Lord Ganesha &amp; our families</p>
+    <p class="lead" data-i18n="lead">With the blessings of Lord Ganesha &amp; our families</p>
     <div class="person">
-      <div class="name">Rohan</div>
-      <div class="parents">Son of Mr. Kishore &amp; Mrs. Alka Thape</div>
+      <div class="name" data-i18n="n_groom">Rohan</div>
+      <div class="parents" data-i18n="p_groom">Son of Mr. Kishore &amp; Mrs. Alka Thape</div>
     </div>
     <div class="amp">&amp;</div>
     <div class="person">
-      <div class="name">Dr. Utkarsha</div>
-      <div class="parents">Daughter of Mr. Khandu &amp; Mrs. Priti Sante</div>
+      <div class="name" data-i18n="n_bride">Dr. Utkarsha</div>
+      <div class="parents" data-i18n="p_bride">Daughter of Mr. Khandu &amp; Mrs. Priti Sante</div>
     </div>
-    <p class="closing">invite you to their<b>Engagement</b></p>
-    <div style="margin-top:24px"><a href="#date" class="btn-gold">View Details ✦</a></div>
+    <p class="closing"><span data-i18n="invite_to">invite you to their</span><b data-i18n="engagement">Engagement</b></p>
+    <div style="margin-top:24px"><a href="#date" class="btn-gold" data-i18n="view_details">View Details ✦</a></div>
   </div>
-  <div class="scroll-hint"><span>SCROLL</span><span class="arrow"></span></div>
+  <div class="scroll-hint"><span data-i18n="scroll">SCROLL</span><span class="arrow"></span></div>
 </header>
 
 <!-- ================= SCRATCH + COUNTDOWN ================= -->
 <section class="scratch-sec bg-pattern" id="date">
   <div class="wrap">
-    <h2 class="title reveal">Save the Date</h2>
+    <h2 class="title reveal" data-i18n="save_date">Save the Date</h2>
     <div class="divider reveal">✦</div>
-    <p class="subtitle reveal">Scratch to reveal the auspicious day</p>
+    <p class="subtitle reveal" data-i18n="scratch_sub">Scratch to reveal the auspicious day</p>
     <div class="scratch-card reveal">
       <div class="scratch-under">
-        <div class="day">Saturday</div>
-        <div class="date">19<sup>th</sup> December</div>
+        <div class="day" data-i18n="weekday">Saturday</div>
+        <div class="date" data-i18n-html="date_big">19<sup>th</sup> December</div>
         <div class="day" style="letter-spacing:6px">2026</div>
-        <div class="time">6:00 PM onwards</div>
+        <div class="time" data-i18n="time_onwards">6:00 PM onwards</div>
       </div>
       <canvas id="scratch" aria-label="Scratch card: drag to reveal the date"></canvas>
     </div>
-    <p class="scratch-tip reveal">☝ Use your finger or mouse to scratch</p>
+    <p class="scratch-tip reveal" data-i18n="scratch_tip">☝ Use your finger or mouse to scratch</p>
 
-    <p class="cd-label reveal">Counting down to the moment</p>
+    <p class="cd-label reveal" data-i18n="counting">Counting down to the moment</p>
     <div class="countdown reveal" id="countdown">
-      <div class="cd-box"><b id="cd-d">00</b><span>Days</span></div>
-      <div class="cd-box"><b id="cd-h">00</b><span>Hours</span></div>
-      <div class="cd-box"><b id="cd-m">00</b><span>Minutes</span></div>
-      <div class="cd-box"><b id="cd-s">00</b><span>Seconds</span></div>
+      <div class="cd-box"><b id="cd-d">00</b><span data-i18n="c_days">Days</span></div>
+      <div class="cd-box"><b id="cd-h">00</b><span data-i18n="c_hours">Hours</span></div>
+      <div class="cd-box"><b id="cd-m">00</b><span data-i18n="c_mins">Minutes</span></div>
+      <div class="cd-box"><b id="cd-s">00</b><span data-i18n="c_secs">Seconds</span></div>
     </div>
   </div>
 </section>
@@ -791,29 +824,29 @@
 <!-- ================= VENUE ================= -->
 <section class="bg-pattern" id="venue">
   <div class="wrap">
-    <h2 class="title reveal">The Venue</h2>
+    <h2 class="title reveal" data-i18n="venue">The Venue</h2>
     <div class="divider reveal">✦</div>
     <div class="venue-card reveal">
       <div class="venue-icon">🏛</div>
-      <h3 class="venue-name">Guruprasad Banquet</h3>
-      <p class="venue-addr">Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 &amp; 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080</p>
-      <a class="btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&amp;ved=1t:242&amp;ictx=111">📍 View on Maps</a>
+      <h3 class="venue-name" data-i18n="venue_name">Guruprasad Banquet</h3>
+      <p class="venue-addr" data-i18n-html="venue_addr">Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 &amp; 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080</p>
+      <a class="btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&amp;ved=1t:242&amp;ictx=111"><span data-i18n="maps">📍 View on Maps</span></a>
     </div>
     <div class="hashtag reveal" id="hashtag" title="Tap to copy">#Enginneredfordoctor</div>
-    <p class="hashtag-note reveal" id="hashtag-note">Tap the hashtag to copy · Use it when you share your photos!</p>
+    <p class="hashtag-note reveal" id="hashtag-note" data-i18n="hash_note">Tap the hashtag to copy · Use it when you share your photos!</p>
   </div>
 </section>
 
 <!-- ================= SCHEDULE ================= -->
 <section class="schedule" id="schedule">
   <div class="wrap">
-    <h2 class="title reveal">Celebration Schedule</h2>
-    <p class="subtitle reveal">Saturday, 19th December 2026</p>
+    <h2 class="title reveal" data-i18n="sched">Celebration Schedule</h2>
+    <p class="subtitle reveal" data-i18n="sched_date">Saturday, 19th December 2026</p>
     <div class="timeline">
-      <div class="t-item reveal"><div class="t-dot">🌼</div><div><span class="when">6:00 PM</span><h3>Guest Welcome</h3><p>Arrival, refreshments &amp; blessings</p></div></div>
-      <div class="t-item reveal"><div class="t-dot">💍</div><div><span class="when">7:00 PM</span><h3>Ring Ceremony</h3><p>Exchange of rings in the presence of family</p></div></div>
-      <div class="t-item reveal"><div class="t-dot">🎶</div><div><span class="when">8:00 PM</span><h3>Music &amp; Celebrations</h3><p>Dance, music and heartfelt moments</p></div></div>
-      <div class="t-item reveal"><div class="t-dot">🍽</div><div><span class="when">8:30 PM onwards</span><h3>Dinner</h3><p>A delicious feast with our loved ones</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="#8a6a12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="3"></circle><path d="M16 4c2.6 3 2.6 6 0 9-2.6-3-2.6-6 0-9zM16 19c2.6 3 2.6 6 0 9-2.6-3-2.6-6 0-9zM4 16c3-2.6 6-2.6 9 0-3 2.6-6 2.6-9 0zM19 16c3-2.6 6-2.6 9 0-3 2.6-6 2.6-9 0z"></path></svg></div><div><span class="when" data-i18n="t1">6:00 PM</span><h3 data-i18n="e1">Guest Welcome</h3><p data-i18n="d1">Arrival, refreshments &amp; blessings</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="#8a6a12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="19.5" r="7.5"></circle><path d="M11.5 8.5 14 5h4l2.5 3.5L16 13z"></path><path d="M11.5 8.5h9"></path></svg></div><div><span class="when" data-i18n="t2">7:00 PM</span><h3 data-i18n="e2">Ring Ceremony</h3><p data-i18n="d2">Exchange of rings in the presence of family</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="#8a6a12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V7l14-3v15"></path><circle cx="9" cy="22.5" r="3"></circle><circle cx="23" cy="19.5" r="3"></circle></svg></div><div><span class="when" data-i18n="t3">8:00 PM</span><h3 data-i18n="e3">Music &amp; Celebrations</h3><p data-i18n="d3">Dance, music and heartfelt moments</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="#8a6a12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4v8a3 3 0 0 0 3 3v13M15 4v8a3 3 0 0 1-3 3M12 4v8M23 28V4c-3 2-4.5 6-4.5 10 0 2.5 1.5 4 4.5 4"></path></svg></div><div><span class="when" data-i18n="t4">8:30 PM onwards</span><h3 data-i18n="e4">Dinner</h3><p data-i18n="d4">A delicious feast with our loved ones</p></div></div>
     </div>
   </div>
 </section>
@@ -821,9 +854,9 @@
 <!-- ================= STORY / GALLERY ================= -->
 <section class="bg-pattern" id="story">
   <div class="wrap">
-    <h2 class="title reveal">Our Story</h2>
+    <h2 class="title reveal" data-i18n="story">Our Story</h2>
     <div class="divider reveal">❦</div>
-    <p class="story-note reveal">
+    <p class="story-note reveal" data-i18n-html="story_txt">
       An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.
       <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.
     </p>
@@ -832,21 +865,21 @@
 
 <!-- ================= FOOTER ================= -->
 <footer>
-  <p class="warm reveal">“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”</p>
+  <p class="warm reveal" data-i18n="warm">“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”</p>
   <div class="hosts reveal">
-    <b>With Love &amp; Best Compliments</b>
-    Mr. Kishore &amp; Mrs. Alka Thape<br>
+    <b data-i18n="love">With Love &amp; Best Compliments</b>
+    <span data-i18n-html="hosts">Mr. Kishore &amp; Mrs. Alka Thape<br>
     Mr. Khandu &amp; Mrs. Priti Sante<br>
-    &amp; Families
+    &amp; Families</span>
   </div>
   <a class="btn-gold wa reveal" id="shareWa" target="_blank" rel="noopener">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>
-    Share on WhatsApp
+    <span data-i18n="wa">Share on WhatsApp</span>
   </a>
   <small>#Enginneredfordoctor · Rohan ❤ Utkarsha · 19.12.2026</small>
 </footer>
 
-<audio id="bgMusic" src="assests/romus.mp4" loop="" preload="auto" playsinline=""></audio>
+<audio id="bgMusic" src="assests/rombus.mp3" loop="" preload="auto" playsinline=""></audio>
 <button class="sound" id="soundBtn" aria-label="Pause music">🔊</button>
 
 <script>
@@ -854,7 +887,32 @@
   const EVENT = new Date('2026-12-19T18:00:00+05:30');
   const MAPS = 'https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&ved=1t:242&ictx=111';
 
-  /* ---------- Background music (assests/romus.mp4) ---------- */
+  /* ---------- Language: English / मराठी ---------- */
+  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "Scratch to reveal the auspicious day", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "☝ Use your finger or mouse to scratch", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "wa": "Share on WhatsApp", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SCRATCH TO REVEAL  ✦", "scr2": "the engagement date", "mute": "Pause music", "unmute": "Play music", "share": "🌸 ॥ श्री गणेशाय नमः ॥ 🌸\n\nRohan & Dr. Utkarsha invite you to their Engagement!\n\n📅 Saturday, 19th December 2026\n🕕 6:00 PM onwards\n📍 Guruprasad Banquet, Mulund, Mumbai\n🗺 {MAPS}\n\n💌 Invitation: {URL}\n\n#Enginneredfordoctor"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती सांते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "शुभ दिवस पाहण्यासाठी खरवडा", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "☝ बोटाने किंवा माउसने खरवडा", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती सांते<br>\n    व समस्त परिवार", "wa": "WhatsApp वर शेअर करा", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  खरवडा  ✦", "scr2": "साखरपुड्याची तारीख", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा", "share": "🌸 ॥ श्री गणेशाय नमः ॥ 🌸\n\nरोहन व डॉ. उत्कर्षा यांच्या साखरपुड्याचे आपणास सहर्ष निमंत्रण!\n\n📅 शनिवार, १९ डिसेंबर २०२६\n🕕 सायं. ६:०० वाजेपासून\n📍 गुरुप्रसाद बँक्वेट, मुलुंड, मुंबई\n🗺 {MAPS}\n\n💌 निमंत्रण: {URL}\n\n#Enginneredfordoctor"}};
+  let LANG = 'en';
+  try { LANG = localStorage.getItem('inv-lang') || 'en'; } catch (e) {}
+  if (LANG !== 'en' && LANG !== 'mr') LANG = 'en';
+  const T = k => (I18N[LANG] && I18N[LANG][k] != null) ? I18N[LANG][k] : I18N.en[k];
+  function applyLang() {
+    document.documentElement.lang = LANG === 'mr' ? 'mr' : 'en';
+    document.body.classList.toggle('lang-mr', LANG === 'mr');
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = T(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = T(el.dataset.i18nHtml); });
+    document.querySelectorAll('#langsw button').forEach(b => b.classList.toggle('on', b.dataset.lang === LANG));
+    const hn = document.getElementById('hashtag-note'); if (hn) hn.dataset.base = hn.textContent;
+    if (typeof updateSoundBtn === 'function') updateSoundBtn();
+    if (typeof paintCover === 'function' && typeof scratched !== 'undefined' && !scratched) paintCover();
+    const wa = document.getElementById('shareWa');
+    if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(T('share').replace('{MAPS}', MAPS).replace('{URL}', location.href.split('#')[0]));
+    if (typeof tick === 'function') tick();
+  }
+  document.querySelectorAll('#langsw button').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation(); LANG = b.dataset.lang;
+    try { localStorage.setItem('inv-lang', LANG); } catch (err) {}
+    applyLang();
+  }));
+
+  /* ---------- Background music (assests/rombus.mp3) ---------- */
   const music = document.getElementById('bgMusic');
   music.volume = 0.7;
   let musicOn = false;
@@ -867,20 +925,37 @@
   function updateSoundBtn() {
     const b = document.getElementById('soundBtn');
     b.textContent = music.paused ? '🔇' : '🔊';
-    b.setAttribute('aria-label', music.paused ? 'Play music' : 'Pause music');
+    b.setAttribute('aria-label', music.paused ? T('unmute') : T('mute'));
   }
   function bell() {} /* bell removed - music plays instead */
 
-  /* ---------- Parijat flower shower ---------- */
+  /* ---------- Rose petal shower ---------- */
   const hero = document.querySelector('.hero');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ROSE = [
+    ['#e0405a','#a8122f','#7a0a20'],
+    ['#d12e4c','#9b1028','#6e0919'],
+    ['#ee6a80','#c42a47','#8c1330'],
+    ['#c8203f','#8f0f27','#5f0716']
+  ];
+  let roseId = 0;
+  function rosePetal() {
+    const c = ROSE[Math.floor(Math.random() * ROSE.length)], id = 'rp' + (roseId++ % 9999);
+    return '<svg viewBox="0 0 40 50" aria-hidden="true"><defs><radialGradient id="' + id + '" cx="35%" cy="28%" r="85%">' +
+      '<stop offset="0" stop-color="' + c[0] + '"/><stop offset=".6" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[2] + '"/></radialGradient></defs>' +
+      '<path d="M20 2 C34 6 42 20 36 34 C32 44 24 49 18 48 C8 46 1 36 3 24 C5 12 12 4 20 2Z" fill="url(#' + id + ')"/>' +
+      '<path d="M20 6 C21 18 19 32 14 44" stroke="rgba(255,200,210,.28)" stroke-width="1.1" fill="none"/>' +
+      '<path d="M12 14 C16 22 16 32 12 40" stroke="rgba(60,0,15,.18)" stroke-width="1" fill="none"/>' +
+      '<path d="M26 12 C30 20 30 30 26 40" stroke="rgba(60,0,15,.14)" stroke-width="1" fill="none"/>' +
+      '<ellipse cx="14" cy="14" rx="7" ry="4.5" fill="rgba(255,225,230,.22)" transform="rotate(-30 14 14)"/></svg>';
+  }
   function petal() {
     const p = document.createElement('span'), dur = 8 + Math.random() * 6;
     p.className = 'petal';
-    p.innerHTML = '<img src="assests/parijat.png" alt="" onerror="this.parentNode.remove()" />';
+    p.innerHTML = rosePetal();
     p.style.left = Math.random() * 100 + '%';
     p.style.setProperty('--dx', (Math.random() * 220 - 110) + 'px');
-    p.style.setProperty('--w', (22 + Math.random() * 20) + 'px');
+    p.style.setProperty('--w', (7 + Math.random() * 6) + 'px');
     p.style.setProperty('--fl', (1.6 + Math.random() * 1.8) + 's');
     p.style.animationDuration = dur + 's';
     hero.appendChild(p);
@@ -896,21 +971,45 @@
 
   /* ---------- Door open ---------- */
   const temple = document.getElementById('temple');
-  function openDoors() {
-    if (temple.classList.contains('opened')) return;
-    temple.classList.add('opened');
+  let started = false, finished = false;
+  const vid = document.getElementById('introVid');
+  const FLASH_AT = 4.0;                     /* seconds: the light flash in the video */
+  function finishIntro() {
+    if (finished) return; finished = true;
+    temple.classList.add('flash');          /* cream light covers the screen */
     document.body.classList.add('revealed');
-    playMusic();
-    if (navigator.vibrate) navigator.vibrate(40);
-    setTimeout(() => { temple.style.opacity = '0'; }, 2400);
-    setTimeout(() => { petals(45); startShower(); document.getElementById('soundBtn').classList.add('show'); }, 2800);
     setTimeout(() => {
-      temple.classList.add('gone');
       document.body.classList.remove('locked');
-    }, 3500);
+      document.body.classList.add('past-gate');
+      window.scrollTo(0, 0);
+      temple.classList.add('fading');       /* light melts away, invitation appears beneath */
+      petals(40); startShower();
+      document.getElementById('soundBtn').classList.add('show');
+    }, 700);
+    setTimeout(() => temple.classList.add('gone'), 2100);
   }
-  temple.addEventListener('click', openDoors);
-  temple.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDoors(); } });
+  function openDoors() {
+    if (started) return; started = true;
+    temple.classList.add('playing');
+    playMusic();                            /* the page music starts with the tap */
+    if (navigator.vibrate) navigator.vibrate(40);
+    vid.currentTime = 0;
+    const pr = vid.play();
+    if (pr && pr.catch) pr.catch(() => finishIntro());   /* if video can't play, go straight to the invitation */
+    /* hand over at the flash */
+    vid.addEventListener('timeupdate', function onT() {
+      if (vid.currentTime >= FLASH_AT) { vid.removeEventListener('timeupdate', onT); finishIntro(); }
+    });
+    vid.addEventListener('ended', finishIntro, { once: true });
+    vid.addEventListener('error', finishIntro, { once: true });
+    /* safety net: if the video stalls or never starts, continue after 7s */
+    setTimeout(() => { if (!finished && vid.currentTime < 0.2) finishIntro(); }, 7000);
+  }
+  document.getElementById('playBtn').addEventListener('click', openDoors);
+  document.getElementById('gate').addEventListener('click', openDoors);
+  document.getElementById('skipBtn').addEventListener('click', e => { e.stopPropagation(); vid.pause(); finishIntro(); });
+  /* if the video file is missing, the gate still works and goes straight to the invitation */
+  vid.addEventListener('error', () => {});
   document.getElementById('soundBtn').addEventListener('click', () => { toggleMusic(); });
 
   /* ---------- Scroll reveal ---------- */
@@ -938,8 +1037,8 @@
       ctx.fillRect(Math.random() * r.width, Math.random() * r.height, 2, 2);
     }
     ctx.fillStyle = '#5a0f1c'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.font = '600 15px Poppins, sans-serif'; ctx.fillText('✦  SCRATCH TO REVEAL  ✦', r.width / 2, r.height / 2 - 14);
-    ctx.font = 'italic 20px "Cormorant Garamond", serif'; ctx.fillText('the engagement date', r.width / 2, r.height / 2 + 16);
+    ctx.font = '600 15px Poppins, sans-serif'; ctx.fillText(T('scr1'), r.width / 2, r.height / 2 - 14);
+    ctx.font = (LANG === 'mr' ? '' : 'italic ') + '20px "' + (LANG === 'mr' ? 'Tiro Devanagari Hindi' : 'Cormorant Garamond') + '", serif'; ctx.fillText(T('scr2'), r.width / 2, r.height / 2 + 16);
   }
   const pos = e => { const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
   function scratchAt(p) {
@@ -980,7 +1079,7 @@
   function tick() {
     let diff = EVENT - Date.now();
     if (diff <= 0) {
-      document.getElementById('countdown').innerHTML = '<p class="cd-label" style="margin:0">🎉 The celebration has begun! 🎉</p>';
+      document.getElementById('countdown').innerHTML = '<p class="cd-label" style="margin:0">' + T('begun') + '</p>';
       return clearInterval(timer);
     }
     const d = Math.floor(diff / 864e5); diff %= 864e5;
@@ -998,13 +1097,14 @@
   tag.addEventListener('click', () => {
     navigator.clipboard?.writeText(tag.textContent).then(() => {
       const n = document.getElementById('hashtag-note'), old = n.textContent;
-      n.textContent = 'Copied! ✓'; setTimeout(() => n.textContent = old, 1800);
+      n.textContent = T('copied'); setTimeout(() => n.textContent = T('hash_note'), 1800);
     });
   });
 
   /* ---------- Share on WhatsApp ---------- */
-  const shareText = `🌸 ॥ श्री गणेशाय नमः ॥ 🌸\n\nRohan & Dr. Utkarsha invite you to their Engagement!\n\n📅 Saturday, 19th December 2026\n🕕 6:00 PM onwards\n📍 Guruprasad Banquet, Mulund, Mumbai\n🗺 ${MAPS}\n\n💌 Invitation: ${location.href.split('#')[0]}\n\n#Enginneredfordoctor`;
-  document.getElementById('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+  /* WhatsApp share link is set per language in applyLang() */
+  applyLang();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { if (typeof paintCover === 'function' && !scratched) paintCover(); });
 })();
 </script>
 
