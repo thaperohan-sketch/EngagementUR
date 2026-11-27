@@ -577,6 +577,24 @@
   body.lang-mr .subtitle,body.lang-mr .lead,body.lang-mr .scratch-tip,body.lang-mr .hashtag-note,body.lang-mr .story-note,body.lang-mr footer{font-family:'Noto Sans Devanagari','Tiro Devanagari Hindi',serif}
 
 
+
+/* Borderless, readable invitation text */
+.subtitle,.lead,.hashtag,.hashtag-note,.story-note,footer .warm,footer .hosts,footer small{display:block!important;max-width:94%;margin-left:auto!important;margin-right:auto!important;border:0!important;outline:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;text-shadow:0 1px 3px rgba(255,248,236,.9)!important}
+.subtitle,.lead{color:#551020!important;font-weight:600;padding:8px!important}
+.hashtag{color:#7a172b!important;-webkit-text-fill-color:#7a172b!important;padding:6px!important}
+.hashtag-note{color:#551020!important;padding:3px!important}
+.story-note{color:#492719!important;padding:14px 8px!important}.story-note em{color:#74152a!important}
+footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!important}footer .hosts b{color:#641326!important}
+/* Clean velvet panels: straight centre seam, realistic vertical folds */
+.curtain-card{height:clamp(235px,62vw,295px)!important;border-radius:15px!important;background:radial-gradient(ellipse at 50% 50%,rgba(224,184,91,.18),transparent 45%),repeating-radial-gradient(ellipse at center,transparent 0 18px,rgba(235,202,127,.12) 19px 20px,transparent 21px 38px),linear-gradient(145deg,#74182a,#430815 78%)!important}
+.curtain-card::before{inset:9px!important;border:1px solid rgba(235,202,127,.75)!important;border-radius:9px!important}
+.curtain-pattern{opacity:.6!important;background:radial-gradient(circle at 50% 50%,transparent 0 27px,rgba(231,194,105,.5) 28px 29px,transparent 30px 46px),repeating-radial-gradient(circle at 50% 50%,transparent 0 20px,rgba(231,194,105,.17) 21px 22px,transparent 23px 42px)!important}
+.curtain{width:52%!important;clip-path:none!important;border:0!important;border-radius:0!important;background:repeating-linear-gradient(90deg,rgba(24,0,7,.46) 0 5px,rgba(255,190,195,.17) 9px 13px,rgba(35,0,9,.34) 18px 24px,rgba(255,220,210,.09) 29px 33px),linear-gradient(90deg,#30040d 0%,#7c152a 18%,#a92b42 35%,#5c0b1c 52%,#9a2037 72%,#39050f 100%)!important;box-shadow:inset 8px 0 17px rgba(255,190,195,.16),inset -10px 0 18px rgba(15,0,5,.5),0 3px 12px rgba(15,0,5,.38)!important;transition:transform 1s cubic-bezier(.22,.7,.18,1)!important}
+.curtain::before{background:repeating-linear-gradient(90deg,transparent 0 7px,rgba(255,226,213,.13) 11px 14px,rgba(22,0,6,.2) 20px 27px,transparent 34px 40px)!important}
+.curtain::after{width:5px!important;background:linear-gradient(90deg,#8b5c1d,#f3d88c,#8b5c1d)!important}
+.curtain-card.open .curtain.left{transform:translateX(-108%)!important}.curtain-card.open .curtain.right{transform:translateX(108%) scaleX(-1)!important}
+.curtain-card.dragging .curtain{transition:none!important}
+
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rohan &amp; Utkarsha | Engagement Invitation</title>
@@ -1132,8 +1150,11 @@
     curtainCard.addEventListener('pointermove', e => {
       if (!curtainGesture || curtainOpened) return;
       const dx = e.clientX - curtainGesture.x;
-      const travel = Math.abs(dx) / curtainCard.clientWidth;
-      setCurtainProgress(curtainGesture.base + travel * 1.65);
+      const dy = e.clientY - curtainGesture.y;
+      if (Math.abs(dx) > Math.abs(dy) * .8) {
+        const travel = Math.abs(dx) / curtainCard.clientWidth;
+        setCurtainProgress(curtainGesture.base + travel * 1.8);
+      }
     });
     function finishCurtainGesture() {
       if (!curtainGesture || curtainOpened) return;
