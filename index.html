@@ -670,20 +670,16 @@
   .scratch-under .time{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic}
   .petal-layer{position:absolute;inset:0;z-index:3;overflow:hidden;touch-action:none;cursor:grab}
   .petal-layer.done{pointer-events:none}
-  .date-petal{position:absolute;width:clamp(27px,8vw,36px);height:clamp(38px,11vw,50px);border-radius:78% 12% 72% 18%;
-    transform-origin:50% 82%;box-shadow:inset -3px -4px 7px rgba(91,20,43,.22),0 3px 6px rgba(40,6,17,.28);
-    background:linear-gradient(135deg,#fff0ef 0%,#e8aeb8 48%,#bd647a 100%);pointer-events:auto;will-change:transform,opacity}
+  .date-petal{position:absolute;width:clamp(19px,5.6vw,25px);height:clamp(26px,7.6vw,34px);border-radius:78% 12% 72% 18%;
+    transform-origin:50% 82%;box-shadow:inset -2px -3px 5px rgba(91,20,43,.22),0 2px 4px rgba(40,6,17,.25);
+    background:linear-gradient(135deg,#fff0ef 0%,#e8aeb8 48%,#bd647a 100%);pointer-events:none;will-change:transform,opacity}
   .date-petal::after{content:"";position:absolute;left:51%;top:12%;width:1px;height:72%;background:rgba(255,239,238,.58);transform:rotate(-12deg)}
   .date-petal:nth-child(3n){background:linear-gradient(135deg,#fce5e7,#dc96a4 52%,#b9526d)}
   .date-petal:nth-child(4n){background:linear-gradient(135deg,#fff2ef,#efc0c7 50%,#ca7889)}
   .date-petal:nth-child(5n){background:linear-gradient(135deg,#f8d9df,#d98698 55%,#a94360)}
-  .date-petal.moved{pointer-events:none;transition:transform .55s cubic-bezier(.18,.7,.25,1),opacity .55s ease;opacity:0}
-  .petal-prompt{position:absolute;z-index:4;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
-    color:#641b30;text-align:center;text-shadow:0 1px 8px rgba(255,245,238,.95);pointer-events:none;font:600 12px Poppins,sans-serif;letter-spacing:.04em}
-  .petal-prompt small{font:italic 19px 'Cormorant Garamond',serif;letter-spacing:0}
-  body.lang-mr .petal-prompt{font:600 12px 'Noto Sans Devanagari','Tiro Devanagari Hindi',serif;letter-spacing:0}
-  body.lang-mr .petal-prompt small{font:500 17px 'Noto Sans Devanagari','Tiro Devanagari Hindi',serif}
-  .scratch-tip{margin-top:14px;font-size:13px;color:#9b5361;letter-spacing:1px}
+  .scratch-tip{max-width:390px;margin:18px auto 0;padding:11px 16px;border:1px solid rgba(156,122,30,.32);border-radius:14px;
+    background:rgba(255,248,236,.94);color:#713344;font-size:13px;line-height:1.65;letter-spacing:.1px;text-align:center;box-shadow:0 4px 14px rgba(90,15,28,.07)}
+  body.lang-mr .scratch-tip{font-family:'Noto Sans Devanagari','Tiro Devanagari Hindi',serif;font-size:13px;line-height:1.75;letter-spacing:0}
 
   .countdown{display:flex;justify-content:center;gap:clamp(8px,3vw,20px);margin-top:44px;flex-wrap:wrap}
   .cd-box{width:clamp(70px,20vw,110px);padding:16px 6px;border-radius:16px;background:#fff;border:1.5px solid var(--gold);
@@ -818,7 +814,7 @@
   <div class="wrap">
     <h2 class="title reveal" data-i18n="save_date">Save the Date</h2>
     <div class="divider reveal">✦</div>
-    <p class="subtitle reveal" data-i18n="scratch_sub">Scratch to reveal the auspicious day</p>
+    <p class="subtitle reveal" data-i18n="scratch_sub">A gentle breeze will reveal your special date</p>
     <div class="scratch-card reveal">
       <div class="scratch-under">
         <div class="day" data-i18n="weekday">Saturday</div>
@@ -826,10 +822,9 @@
         <div class="day" style="letter-spacing:6px">2026</div>
         <div class="time" data-i18n="time_onwards">6:00 PM onwards</div>
       </div>
-      <div class="petal-prompt" aria-hidden="true"><span data-i18n="scr1">✦ SWIPE PETALS ASIDE ✦</span><small data-i18n="scr2">to reveal the date</small></div>
       <div id="petalLayer" class="petal-layer" aria-label="Swipe the rose petals aside to reveal the date"></div>
     </div>
-    <p class="scratch-tip reveal" data-i18n="scratch_tip">☝ Use your finger or mouse to scratch</p>
+    <p class="scratch-tip reveal" data-i18n="scratch_tip">☝ Swipe anywhere across the petals — watch them drift away in the breeze</p>
 
     <p class="cd-label reveal" data-i18n="counting">Counting down to the moment</p>
     <div class="countdown reveal" id="countdown">
@@ -904,7 +899,7 @@
   const MAPS = 'https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&ved=1t:242&ictx=111';
 
   /* ---------- Language: English / मराठी ---------- */
-  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "Swipe the rose petals aside to reveal the date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "☝ Swipe across the petals to move them aside", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE PETALS ASIDE  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "तारीख पाहण्यासाठी गुलाबाच्या पाकळ्या बाजूला सरकवा", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "☝ बोटाने पाकळ्या बाजूला सरकवा", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पाकळ्या बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
+  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "A gentle breeze will reveal your special date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "☝ Swipe anywhere across the petals — watch them drift away in the breeze", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE PETALS ASIDE  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "हळुवार वाऱ्याच्या झुळुकीसोबत तुमची खास तारीख उलगडेल", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "☝ पाकळ्यांवरून बोट फिरवा — त्या वाऱ्यासोबत अलगद दूर जातील", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पाकळ्या बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
   let LANG = 'en';
   try { LANG = localStorage.getItem('inv-lang') || 'en'; } catch (e) {}
   if (LANG !== 'en' && LANG !== 'mr') LANG = 'en';
@@ -1031,85 +1026,72 @@
   }), { threshold: .15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  /* ---------- Interactive rose-petal reveal ---------- */
+  /* ---------- Wind-blown rose-petal reveal ---------- */
   const petalLayer = document.getElementById('petalLayer');
-  let movedPetals = 0, isPetalSwiping = false, lastPetalPoint = null;
+  let petalGesture = null, petalsScattered = false;
   function buildPetals() {
-    if (!petalLayer) return;
+    if (!petalLayer || petalsScattered) return;
     petalLayer.innerHTML = '';
-    movedPetals = 0;
     const w = petalLayer.clientWidth, h = petalLayer.clientHeight;
     if (!w || !h) return;
-    const stepX = 27, stepY = 31;
-    const cols = Math.ceil(w / stepX) + 1, rows = Math.ceil(h / stepY) + 1;
+    const stepX = 20, stepY = 23;
+    const cols = Math.ceil(w / stepX) + 2, rows = Math.ceil(h / stepY) + 2;
     let seed = 1907;
     const rand = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
     for (let row = -1; row < rows; row++) {
       for (let col = -1; col < cols; col++) {
         const petal = document.createElement('span');
         petal.className = 'date-petal';
-        const sizeW = 27 + rand() * 10, sizeH = 38 + rand() * 12;
-        const x = col * stepX + (row % 2 ? stepX / 2 : 0) + (rand() - .5) * 9;
-        const y = row * stepY + (rand() - .5) * 10;
-        petal.style.width = sizeW + 'px';
-        petal.style.height = sizeH + 'px';
-        petal.style.left = x + 'px';
-        petal.style.top = y + 'px';
+        const sizeW = 19 + rand() * 6, sizeH = 26 + rand() * 8;
+        const x = col * stepX + (row % 2 ? stepX / 2 : 0) + (rand() - .5) * 7;
+        const y = row * stepY + (rand() - .5) * 8;
+        petal.style.width = sizeW + 'px'; petal.style.height = sizeH + 'px';
+        petal.style.left = x + 'px'; petal.style.top = y + 'px';
         petal.style.transform = 'rotate(' + ((rand() - .5) * 58) + 'deg)';
-        petal.dataset.petal = '1';
         petalLayer.appendChild(petal);
       }
     }
   }
-  function movePetal(petal, dx, dy) {
-    if (!petal || petal.classList.contains('moved')) return;
-    petal.classList.add('moved');
-    const driftX = dx * 2.4 + (Math.random() - .5) * 44;
-    const driftY = dy * 2.4 + 36 + Math.random() * 50;
-    const rotation = (dx >= 0 ? 1 : -1) * (75 + Math.random() * 150);
-    petal.style.transform = 'translate(' + driftX + 'px,' + driftY + 'px) rotate(' + rotation + 'deg) scale(.72)';
-    movedPetals++;
-    if (movedPetals > 0 && movedPetals % 12 === 0) {
-      const total = petalLayer.querySelectorAll('.date-petal').length;
-      if (movedPetals >= total * .72) {
-        petalLayer.classList.add('done');
-        petalLayer.setAttribute('aria-hidden', 'true');
-        confetti();
-        bell();
+  function scatterPetals(dx, dy) {
+    if (petalsScattered || !petalLayer) return;
+    petalsScattered = true;
+    petalLayer.classList.add('done'); petalLayer.style.cursor = 'default';
+    const length = Math.hypot(dx, dy) || 1, windX = dx / length, windY = dy / length;
+    const petals = [...petalLayer.querySelectorAll('.date-petal')];
+    petals.forEach(petal => {
+      const distance = 260 + Math.random() * 360;
+      const driftX = windX * distance + (Math.random() - .5) * 190;
+      const driftY = windY * distance + (Math.random() - .5) * 260 - 35;
+      const spin = (Math.random() - .5) * 1000;
+      const delay = Math.random() * 240, duration = 950 + Math.random() * 850;
+      petal.style.transition = 'transform '+duration+'ms cubic-bezier(.18,.68,.24,1) '+delay+'ms, opacity '+(duration*.82)+'ms ease '+delay+'ms';
+      petal.style.opacity = '0';
+      petal.style.transform = 'translate('+driftX+'px,'+driftY+'px) rotate('+spin+'deg) scale(.4)';
+    });
+    petalLayer.setAttribute('aria-hidden','true');
+    setTimeout(() => { petalLayer.innerHTML=''; confetti(); bell(); }, 1900);
+  }
+  if (petalLayer) {
+    petalLayer.addEventListener('pointerdown', e => {
+      if (petalsScattered) return;
+      petalGesture = {x:e.clientX,y:e.clientY};
+      petalLayer.setPointerCapture(e.pointerId); e.preventDefault();
+    });
+    petalLayer.addEventListener('pointerup', e => {
+      if (!petalGesture || petalsScattered) return;
+      const dx=e.clientX-petalGesture.x, dy=e.clientY-petalGesture.y;
+      petalGesture=null;
+      if (Math.hypot(dx,dy)>=22) scatterPetals(dx,dy);
+    });
+    petalLayer.addEventListener('pointercancel', () => {petalGesture=null;});
+    buildPetals();
+    let petalWidth=petalLayer.clientWidth;
+    window.addEventListener('resize', () => {
+      if (petalLayer && Math.abs(petalLayer.clientWidth-petalWidth)>12 && !petalsScattered) {
+        petalWidth=petalLayer.clientWidth; buildPetals();
       }
-    }
+    });
   }
-  function petalAtPoint(x, y) {
-    const hit = document.elementFromPoint(x, y);
-    return hit && hit.closest ? hit.closest('#petalLayer .date-petal') : null;
-  }
-  petalLayer.addEventListener('pointerdown', e => {
-    isPetalSwiping = true;
-    lastPetalPoint = { x: e.clientX, y: e.clientY };
-    petalLayer.setPointerCapture(e.pointerId);
-    const p = petalAtPoint(e.clientX, e.clientY);
-    if (p) movePetal(p, 1, 0);
-    e.preventDefault();
-  });
-  petalLayer.addEventListener('pointermove', e => {
-    if (!isPetalSwiping) return;
-    const dx = e.clientX - lastPetalPoint.x, dy = e.clientY - lastPetalPoint.y;
-    if (Math.hypot(dx, dy) < 5) return;
-    const p = petalAtPoint(e.clientX, e.clientY);
-    if (p) movePetal(p, dx, dy);
-    lastPetalPoint = { x: e.clientX, y: e.clientY };
-  });
-  const stopPetalSwipe = () => { isPetalSwiping = false; lastPetalPoint = null; };
-  petalLayer.addEventListener('pointerup', stopPetalSwipe);
-  petalLayer.addEventListener('pointercancel', stopPetalSwipe);
-  buildPetals();
-  let petalWidth = petalLayer.clientWidth;
-  window.addEventListener('resize', () => {
-    if (petalLayer && Math.abs(petalLayer.clientWidth - petalWidth) > 12 && movedPetals === 0) {
-      petalWidth = petalLayer.clientWidth;
-      buildPetals();
-    }
-  });
     function confetti() {
     const colors = ['#d4af37', '#f3d98b', '#5a0f1c', '#f28c28', '#c9184a'];
     for (let i = 0; i < 70; i++) {
