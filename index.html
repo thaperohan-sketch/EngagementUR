@@ -1,605 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta charset="UTF-8"><style id="qw-theme">:root {
-  --qs-action-active: #e8e6ff !important;
-  --qs-action-active-hover: #b2a8ff !important;
-  --qs-action-disabled: #f3f3f7 !important;
-  --qs-action-hover: #f3f3f7 !important;
-  --qs-active-border: #4200db !important;
-  --qs-application-navbar: #4200db !important;
-  --qs-application-navbar-dark: #35009e !important;
-  --qs-application-navbar-foreground: #fff !important;
-  --qs-application-navbar-light: #e8e6ff !important;
-  --qs-automation-dark: #660052 !important;
-  --qs-automation-default: #d600ba !important;
-  --qs-automation-light: #ffe0fb !important;
-  --qs-automation-medium: #b3008f !important;
-  --qs-automation-soft: #ff94f1 !important;
-  --qs-avatar-blue-bg: #d1f1ff !important;
-  --qs-avatar-blue-fg: #002a66 !important;
-  --qs-avatar-fuchsia-bg: #fce6ff !important;
-  --qs-avatar-fuchsia-fg: #590066 !important;
-  --qs-avatar-green-bg: #d9ffd6 !important;
-  --qs-avatar-green-fg: #00471e !important;
-  --qs-avatar-neutral-bg: #dedee3 !important;
-  --qs-avatar-neutral-fg: #131920 !important;
-  --qs-avatar-orange-bg: #ffe0d6 !important;
-  --qs-avatar-orange-fg: #661800 !important;
-  --qs-avatar-pink-bg: #ffe0fb !important;
-  --qs-avatar-pink-fg: #660052 !important;
-  --qs-avatar-primary-bg: #e8e6ff !important;
-  --qs-avatar-primary-fg: #35009e !important;
-  --qs-avatar-red-bg: #ffe0e0 !important;
-  --qs-avatar-red-fg: #700000 !important;
-  --qs-avatar-violet-bg: #f2e5ff !important;
-  --qs-avatar-violet-fg: #45008a !important;
-  --qs-avatar-yellow-bg: #fffbbd !important;
-  --qs-avatar-yellow-fg: #573a00 !important;
-  --qs-blue-100: #e2ebff !important;
-  --qs-blue-1000: #060d27 !important;
-  --qs-blue-200: #c2d5ff !important;
-  --qs-blue-300: #9fbdff !important;
-  --qs-blue-400: #7ea0fc !important;
-  --qs-blue-50: #fafbff !important;
-  --qs-blue-500: #517df6 !important;
-  --qs-blue-600: #2d5fe8 !important;
-  --qs-blue-700: #1d3cb9 !important;
-  --qs-blue-800: #162c85 !important;
-  --qs-blue-900: #102165 !important;
-  --qs-blue-950: #0b1746 !important;
-  --qs-brand: #fff !important;
-  --qs-brand-foreground: #131920 !important;
-  --qs-brand-navbar: #131920 !important;
-  --qs-brand-navbar-dark: #000 !important;
-  --qs-brand-navbar-foreground: #fff !important;
-  --qs-brand-navbar-light: #dedee3 !important;
-  --qs-coachmark: #006ce0 !important;
-  --qs-connection-dark: #661800 !important;
-  --qs-connection-default: #db3300 !important;
-  --qs-connection-light: #ffe0d6 !important;
-  --qs-connection-soft: #ff997a !important;
-  --qs-content: #fff !important;
-  --qs-content-inverse: #333843 !important;
-  --qs-content-inverse-active: #131920 !important;
-  --qs-contrast-foreground: #131920 !important;
-  --qs-control-selected-bg: #4200db !important;
-  --qs-control-selected-hover-bg: #35009e !important;
-  --qs-darkpurple1-100: #eee1ef !important;
-  --qs-darkpurple1-1000: #130b14 !important;
-  --qs-darkpurple1-200: #dcc0dd !important;
-  --qs-darkpurple1-300: #c99ecc !important;
-  --qs-darkpurple1-400: #b57ab8 !important;
-  --qs-darkpurple1-50: #f8f2f8 !important;
-  --qs-darkpurple1-500: #97529b !important;
-  --qs-darkpurple1-600: #754078 !important;
-  --qs-darkpurple1-700: #542e57 !important;
-  --qs-darkpurple1-800: #472749 !important;
-  --qs-darkpurple1-900: #341c35 !important;
-  --qs-darkpurple1-950: #241325 !important;
-  --qs-darkpurple2-100: #f1e3fc !important;
-  --qs-darkpurple2-1000: #1b042f !important;
-  --qs-darkpurple2-200: #e7d0fb !important;
-  --qs-darkpurple2-300: #d6b0f8 !important;
-  --qs-darkpurple2-400: #be81f3 !important;
-  --qs-darkpurple2-50: #f8f1fe !important;
-  --qs-darkpurple2-500: #a652ef !important;
-  --qs-darkpurple2-600: #8e24eb !important;
-  --qs-darkpurple2-700: #7413c9 !important;
-  --qs-darkpurple2-800: #580e98 !important;
-  --qs-darkpurple2-900: #36095d !important;
-  --qs-darkpurple2-950: #260642 !important;
-  --qs-data-categorical-01: #4338ca !important;
-  --qs-data-categorical-02: #d97706 !important;
-  --qs-data-categorical-03: #0891b2 !important;
-  --qs-data-categorical-04: #8b5cf6 !important;
-  --qs-data-categorical-05: #15803d !important;
-  --qs-data-categorical-06: #0c4a6e !important;
-  --qs-data-categorical-07: #d946ef !important;
-  --qs-data-categorical-08: #65a30d !important;
-  --qs-data-categorical-09: #1d4ed8 !important;
-  --qs-data-categorical-10: #831843 !important;
-  --qs-data-categorical-11: #c2410c !important;
-  --qs-data-categorical-12: #115e59 !important;
-  --qs-data-categorical-other: #737373 !important;
-  --qs-data-divergent-negative: #ea580c !important;
-  --qs-data-divergent-positive: #4f46e5 !important;
-  --qs-data-divergent-red-green-negative: #dc2626 !important;
-  --qs-data-divergent-red-green-positive: #16a34a !important;
-  --qs-data-missing: #d4d4d4 !important;
-  --qs-data-sentiment-neutral: #737373 !important;
-  --qs-data-sentiment-warning: #9e6900 !important;
-  --qs-data-sequential-duochromatic-high: #1e1b4b !important;
-  --qs-data-sequential-duochromatic-low: #8b5cf6 !important;
-  --qs-data-sequential-monochromatic-high: #4f46e5 !important;
-  --qs-default-badge: #b4b4bb !important;
-  --qs-default-badge-dot: #656871 !important;
-  --qs-default-border: #8c8c94 !important;
-  --qs-dimension: #4200db !important;
-  --qs-dimension-experimental: #4200db !important;
-  --qs-dimension-experimental-foreground: #4200db !important;
-  --qs-dimension-foreground: #fff !important;
-  --qs-disabled: #8c8c94 !important;
-  --qs-disabled-border: #dedee3 !important;
-  --qs-disabled-foreground: #b4b4bb !important;
-  --qs-divider: #dedee3 !important;
-  --qs-divider-light: #f3f3f7 !important;
-  --qs-error-active-border: #db0000 !important;
-  --qs-error-border: #ffe0e0 !important;
-  --qs-error-dark: #700000 !important;
-  --qs-error-default: #db0000 !important;
-  --qs-error-foreground: #db0000 !important;
-  --qs-error-inverse: #fff !important;
-  --qs-error-light: #ffe0e0 !important;
-  --qs-error-medium: #900 !important;
-  --qs-error-soft: #ff9e9e !important;
-  --qs-focus-offset: 1px !important;
-  --qs-font-base-letter-spacing: .15px !important;
-  --qs-font-display: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif !important;
-  --qs-font-family: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif !important;
-  --qs-font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif !important;
-  --qs-gradient-automation-light-stop: #ffe0fb !important;
-  --qs-gradient-automation-medium-stop: #b3008f !important;
-  --qs-gradient-automation-stop: #d600ba !important;
-  --qs-gradient-connection-light-stop: #ffe0d6 !important;
-  --qs-gradient-connection-stop: #db3300 !important;
-  --qs-gradient-insight-light-stop: #fce6ff !important;
-  --qs-gradient-insight-stop: #a000b8 !important;
-  --qs-gradient-visualization-light-stop: #f2e5ff !important;
-  --qs-gradient-visualization-stop: #7300e5 !important;
-  --qs-green-100: #ccffd8 !important;
-  --qs-green-1000: #001409 !important;
-  --qs-green-200: #a9efba !important;
-  --qs-green-300: #84d39a !important;
-  --qs-green-400: #71c68c !important;
-  --qs-green-50: #f0fff3 !important;
-  --qs-green-500: #5bbe7a !important;
-  --qs-green-600: #3c955a !important;
-  --qs-green-700: #227340 !important;
-  --qs-green-800: #00441f !important;
-  --qs-green-900: #003317 !important;
-  --qs-green-950: #002410 !important;
-  --qs-grid-gap: 16px !important;
-  --qs-grid-gap-xl: 24px !important;
-  --qs-hero-banner-button-hover: color-mix(in srgb, #fff, transparent 60%) !important;
-  --qs-hover-border: #333843 !important;
-  --qs-info-dark: #002a66 !important;
-  --qs-info-default: #006ce0 !important;
-  --qs-info-inverse: #fff !important;
-  --qs-info-light: #d1f1ff !important;
-  --qs-info-medium: #003b8f !important;
-  --qs-info-soft: #75cfff !important;
-  --qs-insight-dark: #590066 !important;
-  --qs-insight-default: #a000b8 !important;
-  --qs-insight-light: #fce6ff !important;
-  --qs-insight-soft: #f299ff !important;
-  --qs-main: #f9f9fb !important;
-  --qs-main-foreground: #131920 !important;
-  --qs-main-secondary-foreground: #656871 !important;
-  --qs-measure: #00802f !important;
-  --qs-measure-experimental: #f2b100 !important;
-  --qs-measure-experimental-foreground: #f2b100 !important;
-  --qs-measure-foreground: #fff !important;
-  --qs-neutral-0: #fff !important;
-  --qs-neutral-100: #f5f3ef !important;
-  --qs-neutral-1000: #0b0a0a !important;
-  --qs-neutral-200: #ece9e4 !important;
-  --qs-neutral-300: #e2dfda !important;
-  --qs-neutral-400: #cdc9c1 !important;
-  --qs-neutral-50: #faf9f7 !important;
-  --qs-neutral-500: #adaaa3 !important;
-  --qs-neutral-600: #94918b !important;
-  --qs-neutral-700: #7d7a73 !important;
-  --qs-neutral-800: #5e5b56 !important;
-  --qs-neutral-900: #302f2c !important;
-  --qs-neutral-950: #151310 !important;
-  --qs-neutral-black: #000 !important;
-  --qs-neutral-dark: #333843 !important;
-  --qs-neutral-deep: #656871 !important;
-  --qs-neutral-default: #dedee3 !important;
-  --qs-neutral-light: #f3f3f7 !important;
-  --qs-neutral-lightest: #f9f9fb !important;
-  --qs-neutral-medium: #8c8c94 !important;
-  --qs-neutral-soft: #b4b4bb !important;
-  --qs-neutral-strong: #131920 !important;
-  --qs-neutral-white: #fff !important;
-  --qs-overlay: color-mix(in srgb, #131920, transparent 50%) !important;
-  --qs-placeholder-foreground: #656871 !important;
-  --qs-popover-border: transparent !important;
-  --qs-primary-dark: #35009e !important;
-  --qs-primary-default: #4200db !important;
-  --qs-primary-foreground: #131920 !important;
-  --qs-primary-inverse: #fff !important;
-  --qs-primary-inverse-foreground: #fff !important;
-  --qs-primary-light: #e8e6ff !important;
-  --qs-primary-medium: #8575ff !important;
-  --qs-primary-soft: #b2a8ff !important;
-  --qs-progress-active: #4200db !important;
-  --qs-red-100: #ffe4e1 !important;
-  --qs-red-1000: #240004 !important;
-  --qs-red-200: #ffc7c2 !important;
-  --qs-red-300: #ffa099 !important;
-  --qs-red-400: #eb6560 !important;
-  --qs-red-50: #fff6f5 !important;
-  --qs-red-500: #c33c38 !important;
-  --qs-red-600: #aa2b2b !important;
-  --qs-red-700: #8a0f0f !important;
-  --qs-red-800: #6e000d !important;
-  --qs-red-900: #57000a !important;
-  --qs-red-950: #3d0007 !important;
-  --qs-secondary: #dedee3 !important;
-  --qs-secondary-dark: #b4b4bb !important;
-  --qs-secondary-foreground: #656871 !important;
-  --qs-secondary-light: #f3f3f7 !important;
-  --qs-shadow: #00000029 !important;
-  --qs-shadow-lg: 0 4px 16px 4px #00000029, 0 2px 6px 1px #00000029 !important;
-  --qs-shadow-md: 0 0 2px 0 #00000029, 0 2px 8px 1px #00000029 !important;
-  --qs-shadow-pin-left: inset -4px 0 4px -4px #00000029 !important;
-  --qs-shadow-pin-right: inset 4px 0 4px -4px #00000029 !important;
-  --qs-shadow-sm: 0 0 2px 0 #00000029, 0 0 4px 0 #00000029 !important;
-  --qs-shadow-xl: 0 4px 8px 2px #00000029, 0 6px 20px 4px #00000029 !important;
-  --qs-spice: #ff9800 !important;
-  --qs-success-dark: #00471e !important;
-  --qs-success-default: #00802f !important;
-  --qs-success-inverse: #fff !important;
-  --qs-success-light: #d9ffd6 !important;
-  --qs-success-medium: #005c26 !important;
-  --qs-success-soft: #aeffa8 !important;
-  --qs-tag-default: #dedee3 !important;
-  --qs-tag-soft-border: #b4b4bb !important;
-  --qs-toggle-tile-lg: calc(.25rem * 15) !important;
-  --qs-toggle-tile-md: calc(.25rem * 12) !important;
-  --qs-toggle-tile-sm: calc(.25rem * 8) !important;
-  --qs-transparent: transparent !important;
-  --qs-visualization-dark: #45008a !important;
-  --qs-visualization-default: #7300e5 !important;
-  --qs-visualization-light: #f2e5ff !important;
-  --qs-visualization-soft: #d4a8ff !important;
-  --qs-warning-dark: #573a00 !important;
-  --qs-warning-default: #f2b100 !important;
-  --qs-warning-experimental: #f2b100 !important;
-  --qs-warning-experimental-light: #fffbbd !important;
-  --qs-warning-experimental-light-foreground: #fffbbd !important;
-  --qs-warning-inverse: #573a00 !important;
-  --qs-warning-light: #fffbbd !important;
-  --qs-warning-medium: #db9200 !important;
-  --qs-warning-soft: #ffed4d !important;
-  --qs-width-modal-lg: 1136px !important;
-  --qs-width-modal-md: 600px !important;
-  --qs-width-modal-sm: 384px !important;
-  --qs-yellow-100: #fff5cf !important;
-  --qs-yellow-1000: #1f1100 !important;
-  --qs-yellow-200: #ffe79e !important;
-  --qs-yellow-300: #fbd86f !important;
-  --qs-yellow-400: #facb3d !important;
-  --qs-yellow-50: #fffcf0 !important;
-  --qs-yellow-500: #e2ac36 !important;
-  --qs-yellow-600: #ca8d2b !important;
-  --qs-yellow-700: #9d672f !important;
-  --qs-yellow-800: #7a4c19 !important;
-  --qs-yellow-900: #522e00 !important;
-  --qs-yellow-950: #381f00 !important;
-  --qs-duration-reorder: .125s !important;
-  --qs-ease-reorder: ease-in-out !important;
-  --be-foreground: #000 !important;
-  --be-background: #fff !important;
-  --be-empty-background: #fff !important;
-  --be-secondary-text: #6b727e !important;
-  --be-error-foreground: #b42318 !important;
-  --be-border: #e4e7ec !important;
-  --be-container-border: #d0d5dd !important;
-  --be-link-foreground: #175cd3 !important;
-  --be-info: #f5faff !important;
-  --be-background-hovered-item: #f2f4f7 !important;
-  --be-qbs-background-hovered-item: #4200db0a !important;
-  --be-attachment-badge-error: #fef3f2 !important;
-  --be-gray-text: #667085 !important;
-  --be-prompt-attachment-foreground: #026aa2 !important;
-  --be-prompt-attachment-background: #e0f2fe !important;
-  --be-prompt-attachment-background-hovered: #b9e6fe !important;
-  --be-inline-form-validation-error: #f04438 !important;
-  --be-gray-text-disabled: #98a2b3 !important;
-  --be-focused-input-field-border: #447bda !important;
-  --be-loading-animation-foreground: #7638fa !important;
-  --be-error-response-background: #fee !important;
-  --be-warning-foreground: #b54708 !important;
-  --be-border-shadow: #0000001f !important;
-  --be-selected-text-gradient-from: #dbb8ff14 !important;
-  --be-selected-text-gradient-to: #962eff12 !important;
-  --be-action-review-background: #2c25250a !important;
-  --be-action-review-disabled: #e5e7eb !important;
-  --be-qbs-drop-area-border: #0003 !important;
-  --be-qbs-drop-area-background: #0000000a !important;
-  --be-qbs-item-selected-background: #f5f5f5 !important;
-  --be-secondary-main: #4200db !important;
-  --be-text-colors-primary: #000 !important;
-  --be-text-colors-secondary: #000000a1 !important;
-  --be-default-foreground: #344054 !important;
-  --be-border-default: #00000073 !important;
-  --icon-disabled: #0003 !important;
-  --be-gray-background: #00000014 !important;
-  --chat-column-base: 720px !important;
-  --chat-column-max: 720px !important;
-  --z-subtask-modal: 10000 !important;
-  --z-above-subtask-modal: 10001 !important;
-  --react-pdf-text-layer: 1 !important;
-  --highlight-bg-color: rgba(180, 0, 170, 1) !important;
-  --highlight-selected-bg-color: rgba(0, 100, 0, 1) !important;
-  --react-pdf-annotation-layer: 1 !important;
-  --annotation-unfocused-field-background: url("data:image/svg+xml;charset=UTF-8,<svg width='1px' height='1px' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' style='fill:rgba(0, 54, 255, 0.13);'/></svg>") !important;
-  --input-focus-border-color: Highlight !important;
-  --input-focus-outline: 1px solid Canvas !important;
-  --input-unfocused-border-color: transparent !important;
-  --input-disabled-border-color: transparent !important;
-  --input-hover-border-color: black !important;
-  --link-outline: none !important;
-  --color-bg: #faf9fc !important;
-  --color-navbar-bg: #f9f9fb !important;
-  --color-navbar-fg: #131920 !important;
-  --color-navbar-divider: rgba(0, 0, 0, .12) !important;
-  --color-leftnav-bg: #ffffff !important;
-  --color-bg-chat-view: #f9f9fb !important;
-  --color-bg-secondary: #ffffff !important;
-  --color-bg-tertiary: #f9fafb !important;
-  --color-bg-hover: #f3f4f6 !important;
-  --color-surface: #f9fafb !important;
-  --color-surface-hover: #f3f4f6 !important;
-  --color-surface-active: #e5e7eb !important;
-  --color-border: rgba(0, 0, 0, .12) !important;
-  --color-border-light: rgba(0, 0, 0, .06) !important;
-  --color-border-strong: #d1d5db !important;
-  --background-toggle-off-default: rgba(255, 255, 255, 0) !important;
-  --color-primary: #4200db !important;
-  --color-primary-dark: #35009e !important;
-  --color-primary-light: #8575ff !important;
-  --color-primary-bg: #e8e6ff !important;
-  --color-primary-hover-border: #35009e !important;
-  --color-nav-icon-active: #4200db !important;
-  --color-nav-hover-border: #4200db !important;
-  --color-primary-alpha-3: color-mix(in srgb, #4200db 3%, transparent) !important;
-  --color-primary-alpha-5: color-mix(in srgb, #4200db 5%, transparent) !important;
-  --color-primary-alpha-8: color-mix(in srgb, #4200db 8%, transparent) !important;
-  --color-primary-alpha-12: color-mix(in srgb, #4200db 12%, transparent) !important;
-  --color-primary-alpha-15: color-mix(in srgb, #4200db 15%, transparent) !important;
-  --color-primary-alpha-20: color-mix(in srgb, #4200db 20%, transparent) !important;
-  --color-primary-alpha-25: color-mix(in srgb, #4200db 25%, transparent) !important;
-  --color-primary-alpha-30: color-mix(in srgb, #4200db 30%, transparent) !important;
-  --color-primary-alpha-40: color-mix(in srgb, #4200db 40%, transparent) !important;
-  --color-primary-alpha-50: color-mix(in srgb, #4200db 50%, transparent) !important;
-  --color-primary-alpha-60: color-mix(in srgb, #4200db 60%, transparent) !important;
-  --color-primary-subtle: color-mix(in srgb, #4200db 12%, transparent) !important;
-  --color-primary-border: color-mix(in srgb, #4200db 30%, transparent) !important;
-  --color-focus-ring: #4200db !important;
-  --color-sidebar-hover: color-mix(in srgb, #4200db 12%, transparent) !important;
-  --color-sidebar-hover-solid: color-mix(in srgb, #4200db 12%, #faf9fc) !important;
-  --block-selection-outline-offset: 2px !important;
-  --color-accent: #4200db !important;
-  --color-accent-foreground: #4200db !important;
-  --color-accent-dark: #35009e !important;
-  --color-accent-light: #e8e6ff !important;
-  --color-accent-inverse: #ffffff !important;
-  --color-link: #4200db !important;
-  --color-brand-ai-gradient-start: #6842ff !important;
-  --color-brand-ai-gradient-mid: #d600ba !important;
-  --color-brand-ai-gradient-end: #ff4b14 !important;
-  --color-brand-kiro: #9147ff !important;
-  --color-primary-gradient-end: #e8e6ff !important;
-  --color-primary-bg-solid: #e8e6ff !important;
-  --color-user-bubble: #F3F3F7 !important;
-  --color-user-bubble-text: #131920 !important;
-  --color-text: #131920 !important;
-  --color-text-secondary: #5e5e5e !important;
-  --color-text-tertiary: #656871 !important;
-  --color-text-muted: #656871 !important;
-  --color-text-on-primary: #ffffff !important;
-  --color-success: #00802f !important;
-  --color-success-dark: #00471e !important;
-  --color-success-light: #d9ffd6 !important;
-  --color-success-hover: #005c26 !important;
-  --color-success-bg: #e6f5eb !important;
-  --color-success-border: #b3d9bf !important;
-  --color-success-foreground: #00802f !important;
-  --color-success-dark-foreground: #00471e !important;
-  --color-success-text: #00471e !important;
-  --color-error: #db0000 !important;
-  --color-error-dark: #700000 !important;
-  --color-error-light: #ffe0e0 !important;
-  --color-error-hover: #ffe0e0 !important;
-  --color-error-bg: #fceaea !important;
-  --color-error-border: #f2cccc !important;
-  --color-error-active-border: #db0000 !important;
-  --color-error-foreground: #db0000 !important;
-  --color-error-dark-foreground: #700000 !important;
-  --color-error-inverse: #ffffff !important;
-  --color-error-text: #700000 !important;
-  --color-warning: #f2b100 !important;
-  --color-warning-dark: #573a00 !important;
-  --color-warning-light: #fffbbd !important;
-  --color-warning-hover: #db9200 !important;
-  --color-warning-bg: #fef7e6 !important;
-  --color-warning-border: #f9dfa3 !important;
-  --color-warning-foreground: #f2b100 !important;
-  --color-warning-dark-foreground: #573a00 !important;
-  --color-warning-inverse: #573a00 !important;
-  --color-surface-warning: #fffbbd !important;
-  --color-text-warning: #573a00 !important;
-  --color-info: #006ce0 !important;
-  --color-info-dark: #002a66 !important;
-  --color-info-light: #d1f1ff !important;
-  --color-info-hover: #003b8f !important;
-  --color-info-bg: #ebf3fc !important;
-  --color-info-border: #b3d1f0 !important;
-  --color-info-foreground: #006ce0 !important;
-  --color-info-dark-foreground: #002a66 !important;
-  --color-info-inverse: #ffffff !important;
-  --color-overlay: rgba(0, 0, 0, .5) !important;
-  --color-shadow: rgba(0, 0, 0, .08) !important;
-  --color-hover: rgba(0, 0, 0, .05) !important;
-  --color-tooltip-bg: rgba(0, 0, 0, .85) !important;
-  --color-tooltip-text: #ffffff !important;
-  --color-voice-purple: #8575ff !important;
-  --color-voice-purple-dark: #4200db !important;
-  --color-voice-purple-light: #8575ff !important;
-  --color-voice-red: #db0000 !important;
-  --color-voice-red-dark: #700000 !important;
-  --color-voice-amber: #f2b100 !important;
-  --color-voice-purple-glow: rgba(66, 0, 219, .4) !important;
-  --color-voice-red-glow: rgba(219, 0, 0, .4) !important;
-  --font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-  --font-mono: "SF Mono", "Monaco", "Menlo", "Consolas", monospace !important;
-  --text-2xs: .5625rem !important;
-  --text-xs: .625rem !important;
-  --text-sm: .6875rem !important;
-  --text-base: .75rem !important;
-  --text-md: .8125rem !important;
-  --text-lg: .875rem !important;
-  --text-xl: 1rem !important;
-  --text-2xl: 1.125rem !important;
-  --text-3xl: 1.25rem !important;
-  --text-4xl: 1.5rem !important;
-  --text-5xl: 2rem !important;
-  --spacing-1: calc(.25rem * 1) !important;
-  --spacing-1-5: calc(.25rem * 1.5) !important;
-  --spacing-2: calc(.25rem * 2) !important;
-  --spacing-3: calc(.25rem * 3) !important;
-  --spacing-4: calc(.25rem * 4) !important;
-  --spacing-5: calc(.25rem * 5) !important;
-  --spacing-6: calc(.25rem * 6) !important;
-  --spacing-7: calc(.25rem * 7) !important;
-  --spacing-8: calc(.25rem * 8) !important;
-  --spacing-9: calc(.25rem * 9) !important;
-  --spacing-10: calc(.25rem * 10) !important;
-  --border-radius-rounded-lg: 8px !important;
-  --radius-sm: 6px !important;
-  --radius-md: 10px !important;
-  --radius-card: 12px !important;
-  --radius-lg: 16px !important;
-  --radius-pill: 8px !important;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .05) !important;
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, .08) !important;
-  --shadow-lg: 0 4px 16px 4px rgba(0, 0, 0, .16), 0 2px 6px 1px rgba(0, 0, 0, .16) !important;
-  --color-success-bg-solid: #d9ffd6 !important;
-  --color-error-bg-solid: #ffe0e0 !important;
-  --color-error-border-solid: #ffe0e0 !important;
-  --color-warning-bg-solid: #fffbbd !important;
-  --color-warning-text: #573a00 !important;
-  --color-info-bg-solid: #d1f1ff !important;
-  --color-info-bg-solid-alt: #d1f1ff !important;
-  --color-info-text: #002a66 !important;
-  --color-info-text-alt: #002a66 !important;
-  --color-emerald: #10b981 !important;
-  --color-teal: #4ecdc4 !important;
-  --color-code-bg: #F3F3F7 !important;
-  --color-code-header-bg: #f1f3f5 !important;
-  --color-code-text: #24292e !important;
-  --color-code-border: #e1e4e8 !important;
-  --color-code-muted: #6a737d !important;
-  --color-inline-code-bg: #F3F3F7 !important;
-  --color-inline-code-text: #24292e !important;
-  --color-inline-code-border: #e1e4e8 !important;
-  --color-scrollbar-thumb: #d1d5db !important;
-  --color-scrollbar-track: transparent !important;
-  --qs-data-cat-01: #4338CA !important;
-  --qs-data-cat-02: #D97706 !important;
-  --qs-data-cat-03: #0891B2 !important;
-  --qs-data-cat-04: #8B5CF6 !important;
-  --qs-data-cat-05: #15803D !important;
-  --qs-data-cat-06: #0C4A6E !important;
-  --qs-data-cat-07: #D946EF !important;
-  --qs-data-cat-08: #65A30D !important;
-  --qs-data-cat-09: #1D4ED8 !important;
-  --qs-data-cat-10: #831843 !important;
-  --qs-data-cat-11: #C2410C !important;
-  --qs-data-cat-12: #115E59 !important;
-  --qs-data-cat-other: #737373 !important;
-  --qs-tertiary-foreground: #656871 !important;
-  --qs-neutral-gray-50: #f9fafb !important;
-  --qs-tertiary-background: #f9fafb !important;
-  --safe-top: 0px !important;
-  --safe-bottom: 0px !important;
-  --safe-left: 0px !important;
-  --safe-right: 0px !important;
-}  /* ---------- Visual refinement: rich curtain folds + readable text panels ---------- */
-  .curtain-card{height:clamp(245px,64vw,310px);border-radius:22px;background:
-    radial-gradient(circle at 50% 50%,rgba(243,217,139,.16),transparent 42%),
-    repeating-conic-gradient(from 0deg at 50% 50%,rgba(226,190,105,.07) 0deg 3deg,transparent 3deg 15deg),
-    radial-gradient(ellipse at center,#7e1c30 0%,#570b1a 66%,#30050e 100%);}
-  .curtain-card::before{inset:12px;border:1px solid rgba(243,217,139,.9);outline:1px solid rgba(243,217,139,.25);outline-offset:4px;border-radius:14px}
-  .curtain-pattern{opacity:.5;background:
-    radial-gradient(circle at 50% 50%,transparent 0 23px,rgba(243,217,139,.38) 24px 25px,transparent 26px 42px),
-    repeating-radial-gradient(circle at 50% 50%,transparent 0 17px,rgba(243,217,139,.14) 18px 19px,transparent 20px 34px),
-    radial-gradient(ellipse at center,transparent 32%,rgba(12,0,4,.38) 100%);}
-  .curtain-pattern::before,.curtain-pattern::after{content:"❧  ✥  ❧";position:absolute;left:50%;transform:translateX(-50%);color:#e8c36f;font-size:24px;letter-spacing:7px;text-shadow:0 1px 5px #25030b}
-  .curtain-pattern::before{top:17px}.curtain-pattern::after{bottom:17px}
-  .scratch-under{background:
-    radial-gradient(circle at 50% 50%,rgba(212,175,55,.14),transparent 48%),
-    repeating-conic-gradient(from 0deg at 50% 50%,rgba(226,190,105,.06) 0deg 2deg,transparent 2deg 14deg),
-    radial-gradient(ellipse at center,#811d31 0%,#570b1a 68%,#350610 100%);}
-  .scratch-under::before{content:"✥  ❧  ✥";top:22px;font-size:27px;text-shadow:0 2px 5px #25030b}
-  .scratch-under::after{content:"❧  ✿  ❧";bottom:20px;font-size:25px;text-shadow:0 2px 5px #25030b}
-  .scratch-under .day{font-size:clamp(16px,4vw,20px);text-shadow:0 1px 4px #25030b}
-  .scratch-under .date{font-size:clamp(39px,10vw,56px);text-shadow:0 2px 9px #25030b,0 0 18px rgba(243,217,139,.22)}
-  .scratch-under .time{color:#fff4dc;text-shadow:0 1px 4px #25030b}
-  .curtain{width:56%;border-radius:0 0 48% 7% / 0 0 5% 4%;clip-path:none!important;transform-origin:50% 50%;
-    background:
-      repeating-linear-gradient(90deg,rgba(23,0,7,.42) 0 7px,rgba(255,190,195,.16) 10px 14px,rgba(35,0,9,.28) 20px 26px,rgba(255,220,210,.08) 31px 35px),
-      linear-gradient(90deg,#2e030c 0%,#681024 13%,#a82a40 26%,#5d0a1c 40%,#a3263c 54%,#4b0716 70%,#85182d 87%,#32040d 100%);
-    box-shadow:inset 12px 0 20px rgba(255,180,190,.15),inset -14px 0 22px rgba(15,0,5,.62),0 5px 16px rgba(15,0,5,.42);
-    transition:transform 1.15s cubic-bezier(.2,.72,.18,1),filter 1.15s ease;}
-  .curtain::before{background:
-    repeating-linear-gradient(90deg,transparent 0 9px,rgba(255,224,210,.17) 12px 14px,rgba(30,0,8,.22) 19px 26px,transparent 32px 39px),
-    linear-gradient(180deg,rgba(255,221,204,.12),transparent 30%,rgba(15,0,5,.2));}
-  .curtain::after{width:9px;background:linear-gradient(90deg,#805018,#f8e4a0 42%,#b47a25 75%,#62390e);box-shadow:0 0 9px rgba(238,190,95,.65)}
-  .curtain.left{left:0;border-radius:0 0 18% 0 / 0 0 5% 0}
-  .curtain.right{right:0;border-radius:0 0 0 18% / 0 0 0 5%}
-  .curtain-card.open .curtain.left{transform:translateX(-112%) rotateY(7deg)}
-  .curtain-card.open .curtain.right{transform:translateX(112%) scaleX(-1) rotateY(-7deg)}
-  .curtain-card.dragging .curtain{transition:none}
-  .curtain-tassel{top:44%;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
-  .scratch-tip{background:linear-gradient(135deg,#fffaf0,#f8ead2);border:1px solid #c9a75e;color:#4b1020;font-weight:600;box-shadow:0 6px 18px rgba(90,15,28,.12)}
-  .subtitle{display:table;max-width:92%;margin:0 auto 28px;padding:10px 18px;border:1px solid rgba(185,139,48,.55);border-radius:18px;background:rgba(255,248,236,.94);color:#5b1020!important;text-shadow:none;box-shadow:0 5px 16px rgba(90,15,28,.08);line-height:1.45}
-  .lead{display:table;max-width:94%;margin:0 auto 16px;padding:9px 16px;border-radius:16px;border:1px solid rgba(185,139,48,.5);background:rgba(255,248,236,.94);color:#581124!important;text-shadow:none;box-shadow:0 4px 14px rgba(90,15,28,.08);line-height:1.5}
-  .hashtag{display:table;margin:36px auto 10px;padding:7px 18px;border-radius:16px;border:1px solid rgba(185,139,48,.58);
-    background:rgba(255,248,236,.96);color:#641326!important;-webkit-text-fill-color:#641326;
-    text-shadow:none;box-shadow:0 5px 16px rgba(90,15,28,.09);font-family:'Cormorant Garamond',serif;font-weight:700;
-    font-size:clamp(22px,5.6vw,32px);letter-spacing:.3px;line-height:1.35;animation:none}
-  .hashtag-note{display:table;max-width:92%;margin:0 auto;padding:8px 14px;border-radius:12px;background:rgba(255,248,236,.94);
-    border:1px solid rgba(185,139,48,.38);color:#581124!important;font-size:13px;line-height:1.5;letter-spacing:.2px}
-  .story-note{padding:22px 24px;border-radius:20px;border:1px solid rgba(185,139,48,.52);
-    background:rgba(255,248,236,.96);color:#492719!important;box-shadow:0 8px 22px rgba(90,15,28,.08)}
-  .story-note em{color:#74152a!important;font-weight:700}
-  footer{padding-top:48px}
-  footer .warm,footer .hosts,footer small{display:block;max-width:660px;margin-left:auto;margin-right:auto;padding:14px 18px;border-radius:16px;
-    background:rgba(255,248,236,.95);border:1px solid rgba(185,139,48,.42);color:#4c291e!important;text-shadow:none;box-shadow:0 5px 16px rgba(90,15,28,.07)}
-  footer .warm{font-weight:600;color:#581124!important}
-  footer .hosts{line-height:1.9}
-  footer .hosts b{color:#641326!important}
-  footer small{margin-top:12px;font-size:13px;letter-spacing:.3px;color:#581124!important}
-  body.lang-mr .subtitle,body.lang-mr .lead,body.lang-mr .scratch-tip,body.lang-mr .hashtag-note,body.lang-mr .story-note,body.lang-mr footer{font-family:'Noto Sans Devanagari','Tiro Devanagari Hindi',serif}
-
-
-
-/* Borderless, readable invitation text */
-.subtitle,.lead,.hashtag,.hashtag-note,.story-note,footer .warm,footer .hosts,footer small{display:block!important;max-width:94%;margin-left:auto!important;margin-right:auto!important;border:0!important;outline:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;text-shadow:0 1px 3px rgba(255,248,236,.9)!important}
-.subtitle,.lead{color:#551020!important;font-weight:600;padding:8px!important}
-.hashtag{color:#7a172b!important;-webkit-text-fill-color:#7a172b!important;padding:6px!important}
-.hashtag-note{color:#551020!important;padding:3px!important}
-.story-note{color:#492719!important;padding:14px 8px!important}.story-note em{color:#74152a!important}
-footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!important}footer .hosts b{color:#641326!important}
-/* Clean velvet panels: straight centre seam, realistic vertical folds */
-.curtain-card{height:clamp(235px,62vw,295px)!important;border-radius:15px!important;background:radial-gradient(ellipse at 50% 50%,rgba(224,184,91,.18),transparent 45%),repeating-radial-gradient(ellipse at center,transparent 0 18px,rgba(235,202,127,.12) 19px 20px,transparent 21px 38px),linear-gradient(145deg,#74182a,#430815 78%)!important}
-.curtain-card::before{inset:9px!important;border:1px solid rgba(235,202,127,.75)!important;border-radius:9px!important}
-.curtain-pattern{opacity:.6!important;background:radial-gradient(circle at 50% 50%,transparent 0 27px,rgba(231,194,105,.5) 28px 29px,transparent 30px 46px),repeating-radial-gradient(circle at 50% 50%,transparent 0 20px,rgba(231,194,105,.17) 21px 22px,transparent 23px 42px)!important}
-.curtain{width:52%!important;clip-path:none!important;border:0!important;border-radius:0!important;background:repeating-linear-gradient(90deg,rgba(24,0,7,.46) 0 5px,rgba(255,190,195,.17) 9px 13px,rgba(35,0,9,.34) 18px 24px,rgba(255,220,210,.09) 29px 33px),linear-gradient(90deg,#30040d 0%,#7c152a 18%,#a92b42 35%,#5c0b1c 52%,#9a2037 72%,#39050f 100%)!important;box-shadow:inset 8px 0 17px rgba(255,190,195,.16),inset -10px 0 18px rgba(15,0,5,.5),0 3px 12px rgba(15,0,5,.38)!important;transition:transform 1s cubic-bezier(.22,.7,.18,1)!important}
-.curtain::before{background:repeating-linear-gradient(90deg,transparent 0 7px,rgba(255,226,213,.13) 11px 14px,rgba(22,0,6,.2) 20px 27px,transparent 34px 40px)!important}
-.curtain::after{width:5px!important;background:linear-gradient(90deg,#8b5c1d,#f3d88c,#8b5c1d)!important}
-.curtain-card.open .curtain.left{transform:translateX(-108%)!important}.curtain-card.open .curtain.right{transform:translateX(108%) scaleX(-1)!important}
-.curtain-card.dragging .curtain{transition:none!important}
-
-
-/* Temporary clean date card: curtain reveal removed pending new concept */
-.curtain,.curtain-tassel{display:none!important}
-.curtain-card{touch-action:auto!important;cursor:default!important}
-</style>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rohan &amp; Utkarsha | Engagement Invitation</title>
 <meta name="description" content="Join Rohan &amp; Utkarsha for their engagement celebration on 19 December 2026 at Guruprasad Banquet, Mulund, Mumbai. Open the invitation for the details.">
@@ -851,6 +252,22 @@ footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!impo
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.3s!important}
   }
+
+  /* ---------- Clean, heavy-petal upward breeze reveal ---------- */
+  .breeze-card{border:0!important;border-radius:16px!important;box-shadow:0 14px 36px rgba(40,4,12,.25)!important;overflow:hidden!important;touch-action:pan-y!important;cursor:pointer}
+  .breeze-card::before,.breeze-card .curtain-pattern{display:none!important}
+  .breeze-card .scratch-under{background:radial-gradient(ellipse at center,#7b1a2b 0%,#570b19 66%,#350610 100%)!important}
+  .breeze-card .scratch-under::before,.breeze-card .scratch-under::after{content:none!important;display:none!important}
+  .breeze-petals{position:absolute;inset:0;z-index:5;overflow:hidden;pointer-events:none}
+  .breeze-petal{position:absolute;display:block;width:var(--petal-w);height:calc(var(--petal-w)*1.25);filter:drop-shadow(0 2px 3px rgba(30,0,8,.38));transform-origin:center;opacity:1}
+  .breeze-petal svg{display:block;width:100%;height:100%}
+  .breeze-active .breeze-petal{animation:petalsLift 1.35s cubic-bezier(.18,.72,.22,1) var(--delay,0s) forwards}
+  @keyframes petalsLift{0%{transform:translate3d(0,0,0) rotate(0) scale(1);opacity:1}100%{transform:translate3d(var(--lift-x),-390px,0) rotate(var(--lift-r)) scale(.72);opacity:0}}
+  .breeze-hint{position:absolute;z-index:7;bottom:10px;left:0;right:0;text-align:center;font:600 10px/1.4 'Poppins',sans-serif;letter-spacing:1.3px;color:#fff0cf;text-shadow:0 1px 5px #210008;transition:opacity .35s}
+  .breeze-hint.hint-away{opacity:0}
+  .breeze-cleared .breeze-petals{display:none}
+  .breeze-card .scratch-under .date{position:relative;z-index:1}
+
 </style>
 </head>
 <body class="locked">
@@ -911,19 +328,17 @@ footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!impo
     <h2 class="title reveal" data-i18n="save_date">Save the Date</h2>
     <div class="divider reveal">✦</div>
     <p class="subtitle reveal" data-i18n="scratch_sub">A gentle touch unveils your special date</p>
-    <div class="curtain-card reveal" id="curtainCard" aria-label="Swipe to draw the velvet curtains apart and reveal the date">
-      <div class="curtain-pattern"></div>
+    <div class="curtain-card breeze-card reveal" id="breezeCard" aria-label="Swipe up to let the breeze lift the rose petals and reveal the date">
       <div class="scratch-under">
         <div class="day" data-i18n="weekday">Saturday</div>
         <div class="date" data-i18n-html="date_big">19<sup>th</sup> December</div>
         <div class="day" style="letter-spacing:6px">2026</div>
         <div class="time" data-i18n="time_onwards">6:00 PM onwards</div>
       </div>
-      <div class="curtain left" id="curtainLeft"></div>
-      <div class="curtain right" id="curtainRight"></div>
-      <div class="curtain-tassel l"></div><div class="curtain-tassel r"></div>
+      <div class="breeze-petals" id="breezePetals" aria-hidden="true"></div>
+      <div class="breeze-hint" id="breezeHint">↑ SWIPE UP TO LIFT THE PETALS ↑</div>
     </div>
-    <p class="scratch-tip reveal" data-i18n="scratch_tip">Our special day</p>
+    <p class="scratch-tip reveal" data-i18n="scratch_tip">Swipe up to let a gentle breeze reveal your date</p>
 
     <p class="cd-label reveal" data-i18n="counting">Counting down to the moment</p>
     <div class="countdown reveal" id="countdown">
@@ -998,7 +413,7 @@ footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!impo
   const MAPS = 'https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&ved=1t:242&ictx=111';
 
   /* ---------- Language: English / मराठी ---------- */
-  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "A gentle breeze will reveal your special date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "☝ Swipe across the velvet curtains to draw them apart and reveal the date", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE CURTAINS OPEN  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "हळुवार वाऱ्याच्या झुळुकीसोबत तुमची खास तारीख उलगडेल", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "आमचा खास दिवस", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पडदे बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
+  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "A gentle breeze will reveal your special date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "Swipe up to let a gentle breeze reveal your date", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE CURTAINS OPEN  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "हळुवार वाऱ्याच्या झुळुकीसोबत तुमची खास तारीख उलगडेल", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "आमचा खास दिवस", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पडदे बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
   let LANG = 'en';
   try { LANG = localStorage.getItem('inv-lang') || 'en'; } catch (e) {}
   if (LANG !== 'en' && LANG !== 'mr') LANG = 'en';
@@ -1126,50 +541,51 @@ footer .warm,footer .hosts,footer small{color:#492719!important;padding:8px!impo
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 
-  /* ---------- Swipe-open royal velvet curtains ---------- */
-  const curtainCard = document.getElementById('curtainCard');
-  let curtainGesture = null, curtainOpened = false, curtainProgress = 0;
-  function setCurtainProgress(value) {
-    curtainProgress = Math.max(0, Math.min(1, value));
-    const left = document.getElementById('curtainLeft');
-    const right = document.getElementById('curtainRight');
-    left.style.transform = 'translateX(' + (-108 * curtainProgress) + '%)';
-    right.style.transform = 'translateX(' + (108 * curtainProgress) + '%) scaleX(-1)';
-  }
-  function openCurtains() {
-    if (curtainOpened) return;
-    curtainOpened = true;
-    curtainCard.classList.remove('dragging');
-    curtainCard.classList.add('open');
-    setCurtainProgress(1);
-  }
-  if (curtainCard) {
-    curtainCard.addEventListener('pointerdown', e => {
-      if (curtainOpened) return;
-      curtainGesture = { x:e.clientX, y:e.clientY, base:curtainProgress };
-      curtainCard.classList.add('dragging');
-      curtainCard.setPointerCapture(e.pointerId);
-      e.preventDefault();
-    });
-    curtainCard.addEventListener('pointermove', e => {
-      if (!curtainGesture || curtainOpened) return;
-      const dx = e.clientX - curtainGesture.x;
-      const dy = e.clientY - curtainGesture.y;
-      if (Math.abs(dx) > Math.abs(dy) * .8) {
-        const travel = Math.abs(dx) / curtainCard.clientWidth;
-        setCurtainProgress(curtainGesture.base + travel * 1.8);
-      }
-    });
-    function finishCurtainGesture() {
-      if (!curtainGesture || curtainOpened) return;
-      curtainGesture = null;
-      curtainCard.classList.remove('dragging');
-      if (curtainProgress >= .2) openCurtains();
-      else setCurtainProgress(0);
+  /* ---------- Heavy rose-petal breeze date reveal ---------- */
+  const breezeCard = document.getElementById('breezeCard');
+  const breezeLayer = document.getElementById('breezePetals');
+  const breezeHint = document.getElementById('breezeHint');
+  let breezeStart = null, breezeDone = false;
+  function seedBreezePetals() {
+    if (!breezeLayer || reduceMotion) return;
+    breezeLayer.innerHTML = '';
+    // Dense coverage: petals overlap across the whole date panel before the reveal.
+    for (let i = 0; i < 58; i++) {
+      const p = document.createElement('span');
+      p.className = 'breeze-petal';
+      p.innerHTML = rosePetal();
+      p.style.left = (Math.random() * 96 + 2) + '%';
+      p.style.top = (Math.random() * 88 + 6) + '%';
+      p.style.setProperty('--petal-w', (13 + Math.random() * 11) + 'px');
+      p.style.setProperty('--lift-x', (Math.random() * 150 - 75) + 'px');
+      p.style.setProperty('--lift-r', (Math.random() * 520 - 260) + 'deg');
+      p.style.setProperty('--delay', (Math.random() * .22) + 's');
+      breezeLayer.appendChild(p);
     }
-    curtainCard.addEventListener('pointerup', finishCurtainGesture);
-    curtainCard.addEventListener('pointercancel', finishCurtainGesture);
-    curtainCard.addEventListener('click', () => { if (!curtainOpened) openCurtains(); });
+  }
+  function revealWithBreeze() {
+    if (breezeDone || !breezeCard) return;
+    breezeDone = true;
+    breezeCard.classList.add('breeze-active');
+    if (breezeHint) breezeHint.classList.add('hint-away');
+    breezeLayer.querySelectorAll('.breeze-petal').forEach((p, i) => {
+      p.style.animationDelay = (Math.random() * .22) + 's';
+    });
+    setTimeout(() => breezeCard.classList.add('breeze-cleared'), 1500);
+  }
+  if (breezeCard && breezeLayer) {
+    seedBreezePetals();
+    breezeCard.addEventListener('pointerdown', e => {
+      if (breezeDone) return;
+      breezeStart = {x:e.clientX,y:e.clientY};
+    });
+    breezeCard.addEventListener('pointerup', e => {
+      if (!breezeStart || breezeDone) return;
+      const dx=e.clientX-breezeStart.x, dy=e.clientY-breezeStart.y;
+      breezeStart=null;
+      if (dy < -18 || Math.abs(dx) > 24) revealWithBreeze();
+    });
+    breezeCard.addEventListener('click', revealWithBreeze);
   }
     function confetti() {
     const colors = ['#d4af37', '#f3d98b', '#5a0f1c', '#f28c28', '#c9184a'];
