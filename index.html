@@ -270,6 +270,12 @@
   .breeze-cleared .breeze-petals{display:none}
   .breeze-card .scratch-under .date{position:relative;z-index:1}
 
+
+  .delicate-petal-shape{display:block;position:relative;width:100%;height:100%;border-radius:88% 12% 82% 18%;transform:rotate(42deg);background:linear-gradient(145deg,#f3b5bd 0%,#dc8291 38%,#bd5268 78%,#96364d 100%);box-shadow:inset 2px 1px 3px rgba(255,239,235,.45),inset -2px -2px 4px rgba(104,25,45,.12)}
+  .delicate-petal-shape::after{content:"";position:absolute;width:1px;height:76%;left:52%;top:12%;background:linear-gradient(to bottom,rgba(255,244,236,.52),rgba(255,244,236,0));transform:rotate(-8deg);border-radius:100%}
+  .breeze-petal:nth-child(5n) .delicate-petal-shape{background:linear-gradient(145deg,#f8cbd0 0%,#e99ca6 52%,#c76a7b 100%)}
+  .breeze-petal:nth-child(7n) .delicate-petal-shape{background:linear-gradient(145deg,#eaa0aa 0%,#d36f80 55%,#a8465b 100%)}
+
 </style>
 </head>
 <body class="locked">
@@ -555,7 +561,7 @@
     for (let i = 0; i < 156; i++) {
       const p = document.createElement('span');
       p.className = 'breeze-petal';
-      p.innerHTML = rosePetal();
+      p.innerHTML = '<span class="delicate-petal-shape"></span>';
       const col = i % 13, row = Math.floor(i / 13);
       p.style.left = (col * 7.7 + (row % 2 ? 1.8 : 0) + (Math.random() * 3 - 1.5)) + '%';
       p.style.top = (row * 14.2 + (Math.random() * 4 - 2)) + '%';
