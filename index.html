@@ -259,16 +259,16 @@
   .breeze-card .scratch-under{background:radial-gradient(ellipse at center,#7b1a2b 0%,#570b19 66%,#350610 100%)!important}
   .breeze-card .scratch-under::before,.breeze-card .scratch-under::after{content:none!important;display:none!important}
   .breeze-petals{position:absolute;inset:0;z-index:5;overflow:hidden;pointer-events:none}
-  .breeze-petal{position:absolute;display:block;width:var(--petal-w);height:calc(var(--petal-w)*1.25);filter:drop-shadow(0 1px 2px rgba(30,0,8,.24));transform-origin:center;opacity:1}
-  .breeze-petal:nth-child(3n){filter:drop-shadow(0 1px 2px rgba(30,0,8,.2)) brightness(1.22)}
-  .breeze-petal:nth-child(4n){filter:drop-shadow(0 1px 2px rgba(30,0,8,.2)) brightness(1.12)}
-  .breeze-petal svg{display:block;width:100%;height:100%}
+  .breeze-petal{position:absolute;display:block;transform:rotate(var(--r,0deg));transform-origin:50% 50%;will-change:transform,opacity;opacity:.99;filter:drop-shadow(0 2px 3px rgba(30,0,8,.2))}
+  .breeze-petal::after{content:"";position:absolute;inset:3px 4px 5px 3px;border-radius:inherit;background:radial-gradient(ellipse at 28% 16%,rgba(255,247,247,.5) 0,transparent 38%);box-shadow:inset 0 1px 2px rgba(255,255,255,.5);transform:rotate(-7deg)}
   .breeze-active .breeze-petal{animation:petalsLift 1.35s cubic-bezier(.18,.72,.22,1) var(--delay,0s) forwards}
   @keyframes petalsLift{0%{transform:translate3d(0,0,0) rotate(0) scale(1);opacity:1}100%{transform:translate3d(var(--lift-x),-430px,0) rotate(var(--lift-r)) scale(.82);opacity:0}}
   .breeze-hint{position:absolute;z-index:7;bottom:10px;left:0;right:0;text-align:center;font:600 10px/1.4 'Poppins',sans-serif;letter-spacing:1.3px;color:#fff0cf;text-shadow:0 1px 5px #210008;transition:opacity .35s}
   .breeze-hint.hint-away{opacity:0}
   .breeze-cleared .breeze-petals{display:none}
   .breeze-card .scratch-under .date{position:relative;z-index:1}
+  .scratch-tip{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;border-radius:0!important;color:#713344!important}
+  .breeze-card{cursor:pointer}
 
 
   .delicate-petal-shape{display:block;position:relative;width:100%;height:100%;border-radius:88% 12% 82% 18%;transform:rotate(42deg);background:linear-gradient(145deg,#f3b5bd 0%,#dc8291 38%,#bd5268 78%,#96364d 100%);box-shadow:inset 2px 1px 3px rgba(255,239,235,.45),inset -2px -2px 4px rgba(104,25,45,.12)}
@@ -336,7 +336,7 @@
     <h2 class="title reveal" data-i18n="save_date">Save the Date</h2>
     <div class="divider reveal">✦</div>
     <p class="subtitle reveal" data-i18n="scratch_sub">A gentle touch unveils your special date</p>
-    <div class="curtain-card breeze-card reveal" id="breezeCard" aria-label="Swipe up to let the breeze lift the rose petals and reveal the date">
+    <div class="curtain-card breeze-card reveal" id="breezeCard" aria-label="Tap to let the breeze lift the rose petals and reveal the date">
       <div class="scratch-under">
         <div class="day" data-i18n="weekday">Saturday</div>
         <div class="date" data-i18n-html="date_big">19<sup>th</sup> December</div>
@@ -421,7 +421,7 @@
   const MAPS = 'https://www.google.com/maps/place/hotel+guruprasad+mulund/data=!4m2!3m1!1s0x3be7b85c42645fc5:0x11cd5ac10e584314?sa=X&ved=1t:242&ictx=111';
 
   /* ---------- Language: English / मराठी ---------- */
-  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "A gentle breeze will reveal your special date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "Swipe up to let a gentle breeze reveal your date", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE CURTAINS OPEN  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "हळुवार वाऱ्याच्या झुळुकीसोबत तुमची खास तारीख उलगडेल", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "वरील पाकळ्यांवर टॅप करा आणि तारीख उलगडू द्या", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पडदे बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
+  const I18N = {"en": {"g_sub": "With the blessings of Lord Ganesha", "g_play": "TAP TO PLAY", "g_note": "MUSIC WILL PLAY", "lead": "With the blessings of Lord Ganesha & our families", "n_groom": "Rohan", "p_groom": "Son of Mr. Kishore & Mrs. Alka Thape", "n_bride": "Dr. Utkarsha", "p_bride": "Daughter of Mr. Khandu & Mrs. Priti Sante", "invite_to": "invite you to their", "engagement": "Engagement", "view_details": "View Details ✦", "scroll": "SCROLL", "save_date": "Save the Date", "scratch_sub": "A gentle breeze will reveal your special date", "weekday": "Saturday", "date_big": "19<sup>th</sup> December", "time_onwards": "6:00 PM onwards", "scratch_tip": "Tap above to let a gentle breeze reveal your date", "counting": "Counting down to the moment", "c_days": "Days", "c_hours": "Hours", "c_mins": "Minutes", "c_secs": "Seconds", "venue": "The Venue", "venue_name": "Guruprasad Banquet", "venue_addr": "Ground Floor, Kotak Mahindra Bank Building,<br>Shop No. 6 & 7, Marathon Max,<br>Near Mulund–Goregaon Link Road,<br>Mumbai, Maharashtra 400080", "maps": "📍 View on Maps", "hash_note": "Tap the hashtag to copy · Use it when you share your photos!", "sched": "Celebration Schedule", "sched_date": "Saturday, 19th December 2026", "t1": "6:00 PM", "e1": "Guest Welcome", "d1": "Arrival, refreshments & blessings", "t2": "7:00 PM", "e2": "Ring Ceremony", "d2": "Exchange of rings in the presence of family", "t3": "8:00 PM", "e3": "Music & Celebrations", "d3": "Dance, music and heartfelt moments", "t4": "8:30 PM onwards", "e4": "Dinner", "d4": "A delicious feast with our loved ones", "story": "Our Story", "story_txt": "An engineer who builds solutions and a doctor who heals hearts — it seems destiny had the perfect prescription in mind.\n      <em>Two families, one beautiful beginning.</em> We'd be honoured to have you with us as we take our first step towards forever.", "warm": "“Your presence is the greatest blessing. We look forward to celebrating this beautiful beginning with you.”", "love": "With Love & Best Compliments", "hosts": "Mr. Kishore & Mrs. Alka Thape<br>\n    Mr. Khandu & Mrs. Priti Sante<br>\n    & Families", "copied": "Copied! ✓", "begun": "🎉 The celebration has begun! 🎉", "scr1": "✦  SWIPE CURTAINS OPEN  ✦", "scr2": "to reveal the date", "mute": "Pause music", "unmute": "Play music"}, "mr": {"g_sub": "श्री गणेशाच्या कृपाशीर्वादाने", "g_play": "सुरू करण्यासाठी टॅप करा", "g_note": "संगीत सुरू होईल", "lead": "श्री गणेशाच्या कृपाशीर्वादाने आणि आमच्या कुटुंबीयांच्या सहवासात", "n_groom": "रोहन", "p_groom": "श्री. किशोर व सौ. अलका थापे यांचे सुपुत्र", "n_bride": "डॉ. उत्कर्षा", "p_bride": "श्री. खंडू व सौ. प्रीती संते यांची सुकन्या", "invite_to": "आपणास आमच्या", "engagement": "साखरपुड्याचे सहर्ष निमंत्रण", "view_details": "तपशील पहा ✦", "scroll": "खाली पहा", "save_date": "तारीख लक्षात ठेवा", "scratch_sub": "हळुवार वाऱ्याच्या झुळुकीसोबत तुमची खास तारीख उलगडेल", "weekday": "शनिवार", "date_big": "१९ डिसेंबर", "time_onwards": "सायं. ६:०० वाजेपासून", "scratch_tip": "वरील पाकळ्यांवर टॅप करा आणि तारीख उलगडू द्या", "counting": "शुभ क्षणाची उलटगणती", "c_days": "दिवस", "c_hours": "तास", "c_mins": "मिनिटे", "c_secs": "सेकंद", "venue": "कार्यक्रमाचे ठिकाण", "venue_name": "गुरुप्रसाद बँक्वेट", "venue_addr": "तळमजला, कोटक महिंद्रा बँक इमारत,<br>दुकान क्र. ६ व ७, मॅरेथॉन मॅक्स,<br>मुलुंड–गोरेगाव लिंक रोडजवळ,<br>मुंबई, महाराष्ट्र ४०००८०", "maps": "📍 नकाशावर पहा", "hash_note": "हॅशटॅग कॉपी करण्यासाठी टॅप करा · फोटो शेअर करताना वापरा!", "sched": "कार्यक्रम पत्रिका", "sched_date": "शनिवार, १९ डिसेंबर २०२६", "t1": "सायं. ६:००", "e1": "पाहुण्यांचे स्वागत", "d1": "आगमन, अल्पोपहार व शुभाशीर्वाद", "t2": "सायं. ७:००", "e2": "अंगठी समारंभ", "d2": "कुटुंबीयांच्या उपस्थितीत अंगठ्यांची देवाणघेवाण", "t3": "सायं. ८:००", "e3": "संगीत व आनंदोत्सव", "d3": "नृत्य, संगीत आणि हृदयस्पर्शी क्षण", "t4": "रात्री ८:३० पासून", "e4": "स्नेहभोजन", "d4": "आपल्या प्रियजनांसोबत रुचकर भोजन", "story": "आमची कहाणी", "story_txt": "एक अभियंता जो उपाय घडवतो आणि एक डॉक्टर जी मनं बरी करते — जणू नियतीनेच ही जोडी जुळवली.\n      <em>दोन कुटुंबे, एक सुंदर सुरुवात.</em> आमच्या सहजीवनाच्या या पहिल्या पावलावर आपली उपस्थिती आम्हाला लाभली तर आम्हाला अतिशय आनंद होईल.", "warm": "“आपली उपस्थिती हाच आमच्यासाठी सर्वात मोठा आशीर्वाद. या सुंदर सुरुवातीचा आनंद आपल्यासोबत साजरा करण्यास आम्ही उत्सुक आहोत.”", "love": "सप्रेम निमंत्रक", "hosts": "श्री. किशोर व सौ. अलका थापे<br>\n    श्री. खंडू व सौ. प्रीती संते<br>\n    व समस्त परिवार", "copied": "कॉपी झाले! ✓", "begun": "🎉 सोहळा सुरू झाला आहे! 🎉", "scr1": "✦  पडदे बाजूला सरकवा  ✦", "scr2": "तारीख पाहण्यासाठी", "mute": "संगीत थांबवा", "unmute": "संगीत सुरू करा"}};
   let LANG = 'en';
   try { LANG = localStorage.getItem('inv-lang') || 'en'; } catch (e) {}
   if (LANG !== 'en' && LANG !== 'mr') LANG = 'en';
@@ -557,18 +557,29 @@
   function seedBreezePetals() {
     if (!breezeLayer || reduceMotion) return;
     breezeLayer.innerHTML = '';
-    // Dense coverage: petals overlap across the whole date panel before the reveal.
-    for (let i = 0; i < 156; i++) {
-      const p = document.createElement('span');
-      p.className = 'breeze-petal';
-      p.innerHTML = '<span class="delicate-petal-shape"></span>';
-      const col = i % 13, row = Math.floor(i / 13);
-      p.style.left = (col * 7.7 + (row % 2 ? 1.8 : 0) + (Math.random() * 3 - 1.5)) + '%';
-      p.style.top = (row * 14.2 + (Math.random() * 4 - 2)) + '%';
-      p.style.setProperty('--petal-w', (20 + Math.random() * 12) + 'px');
-      p.style.setProperty('--lift-x', (Math.random() * 70 - 35) + 'px');
-      p.style.setProperty('--lift-r', (Math.random() * 240 - 120) + 'deg');
-      p.style.setProperty('--delay', (Math.random() * .32) + 's');
+    const rect = breezeCard.getBoundingClientRect();
+    const w = rect.width - 18, h = rect.height - 18;
+    const stepX = 25, stepY = 25;
+    const cols = Math.ceil(w / stepX) + 2, rows = Math.ceil(h / stepY) + 2;
+    const shades = [
+      ['#ffe0e6','#e98ba2','#b94b6b'],['#ffd2dd','#e77d98','#b53e62'],
+      ['#f9c0cf','#df718d','#a9365b'],['#ffe8eb','#f0a4b6','#c85c78'],
+      ['#f4b5c5','#d96785','#9f3155']
+    ];
+    for (let row=0; row<rows; row++) for (let col=0; col<cols; col++) {
+      const p=document.createElement('i'); p.className='breeze-petal';
+      const jitterX=(Math.random()-.5)*23, jitterY=(Math.random()-.5)*21;
+      const stagger=(row%2)*stepX*.48;
+      const x=col*stepX-stagger+jitterX-9, y=row*stepY+jitterY-8;
+      const width=31+Math.random()*9, height=34+Math.random()*11;
+      const shade=shades[Math.floor(Math.random()*shades.length)];
+      p.style.left=x+'px'; p.style.top=y+'px'; p.style.width=width+'px'; p.style.height=height+'px';
+      p.style.borderRadius='58% 48% 55% 45% / 58% 55% 45% 42%';
+      p.style.background='radial-gradient(ellipse at 32% 20%,'+shade[0]+' 0,#f7c0cc 22%,'+shade[1]+' 63%,'+shade[2]+' 100%)';
+      p.style.boxShadow='inset 2px 3px 5px rgba(255,243,245,.66),inset -3px -4px 6px rgba(142,41,70,.29),0 2px 5px rgba(108,16,43,.21)';
+      p.style.setProperty('--lift-x',(Math.random()*720-360)+'px');
+      p.style.setProperty('--lift-r',(Math.random()*1000-500)+'deg');
+      p.style.setProperty('--delay',(Math.random()*.24)+'s');
       breezeLayer.appendChild(p);
     }
   }
